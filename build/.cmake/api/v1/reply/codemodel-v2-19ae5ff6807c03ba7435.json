@@ -1,0 +1,237 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						5
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "myCode1",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "myCode1",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "myCode2",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "myCode2",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "INTERFACE",
+					"childIndexes" : 
+					[
+						4
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "myLib",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "INTERFACE/doc",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 3,
+					"source" : "myLib/doc",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "myCode3",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "myCode3",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "myCmakeTest"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "simpleProject",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "stabilisation",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3,
+						4
+					],
+					"name" : "VectorD",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "samples",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "VectorD::@8f2e06132bc3ad500312",
+					"jsonFile" : "target-VectorD-Debug-41a6e595688653af1482.json",
+					"name" : "VectorD",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "html::@823755c9640417a52d4c",
+					"jsonFile" : "target-html-Debug-71f06bebc55ecfe3950c.json",
+					"name" : "html",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "main1::@0c5b62157d8d55c28713",
+					"jsonFile" : "target-main1-Debug-e15dcce1b66b299a146f.json",
+					"name" : "main1",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "main2::@0c5b62157d8d55c28713",
+					"jsonFile" : "target-main2-Debug-fd52ea578ffdd22bd2ef.json",
+					"name" : "main2",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "main3::@0c5b62157d8d55c28713",
+					"jsonFile" : "target-main3-Debug-587e1ade0975d57e66e9.json",
+					"name" : "main3",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "simpleProject::@e0f3069e2053f66a3215",
+					"jsonFile" : "target-simpleProject-Debug-5dc966efce3411c7e4e2.json",
+					"name" : "simpleProject",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "stabilisation::@0f0527e194815ebdfeb9",
+					"jsonFile" : "target-stabilisation-Debug-6b8d8465304fb0466e07.json",
+					"name" : "stabilisation",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build",
+		"source" : "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

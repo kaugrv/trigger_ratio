@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../myCode1/include/plop.hpp
+
+/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/main.cpp
+iostream
+-
+plop.hpp
+/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/plop.hpp
+
+/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/plop.cpp
+iostream
+-
+plop.hpp
+/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/plop.hpp
+
