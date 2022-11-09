@@ -1,4 +1,4 @@
-# Install script for directory: /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet
+# Install script for directory: /home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,10 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode1/cmake_install.cmake")
-  include("/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode2/cmake_install.cmake")
-  include("/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/INTERFACE/cmake_install.cmake")
-  include("/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode3/cmake_install.cmake")
+  include("/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/INTERFACE/cmake_install.cmake")
+  include("/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/myExamples/cmake_install.cmake")
 
 endif()
 
@@ -59,5 +57,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

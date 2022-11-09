@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet
+CMAKE_SOURCE_DIR = "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build
+CMAKE_BINARY_DIR = "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -145,9 +145,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -176,43 +176,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named simpleProject
+# Target rules for targets named Ratio
 
 # Build rule for target.
-simpleProject: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simpleProject
-.PHONY : simpleProject
+Ratio: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ratio
+.PHONY : Ratio
 
 # fast build rule for target.
-simpleProject/fast:
-	$(MAKE) $(MAKESILENT) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/build
-.PHONY : simpleProject/fast
-
-#=============================================================================
-# Target rules for targets named stabilisation
-
-# Build rule for target.
-stabilisation: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 stabilisation
-.PHONY : stabilisation
-
-# fast build rule for target.
-stabilisation/fast:
-	$(MAKE) $(MAKESILENT) -f myCode2/CMakeFiles/stabilisation.dir/build.make myCode2/CMakeFiles/stabilisation.dir/build
-.PHONY : stabilisation/fast
-
-#=============================================================================
-# Target rules for targets named VectorD
-
-# Build rule for target.
-VectorD: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorD
-.PHONY : VectorD
-
-# fast build rule for target.
-VectorD/fast:
-	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/build
-.PHONY : VectorD/fast
+Ratio/fast:
+	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/build
+.PHONY : Ratio/fast
 
 #=============================================================================
 # Target rules for targets named html
@@ -228,43 +202,17 @@ html/fast:
 .PHONY : html/fast
 
 #=============================================================================
-# Target rules for targets named main3
+# Target rules for targets named examplesRatio
 
 # Build rule for target.
-main3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main3
-.PHONY : main3
+examplesRatio: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examplesRatio
+.PHONY : examplesRatio
 
 # fast build rule for target.
-main3/fast:
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main3.dir/build.make myCode3/CMakeFiles/main3.dir/build
-.PHONY : main3/fast
-
-#=============================================================================
-# Target rules for targets named main2
-
-# Build rule for target.
-main2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main2
-.PHONY : main2
-
-# fast build rule for target.
-main2/fast:
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main2.dir/build.make myCode3/CMakeFiles/main2.dir/build
-.PHONY : main2/fast
-
-#=============================================================================
-# Target rules for targets named main1
-
-# Build rule for target.
-main1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main1
-.PHONY : main1
-
-# fast build rule for target.
-main1/fast:
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main1.dir/build.make myCode3/CMakeFiles/main1.dir/build
-.PHONY : main1/fast
+examplesRatio/fast:
+	$(MAKE) $(MAKESILENT) -f myExamples/CMakeFiles/examplesRatio.dir/build.make myExamples/CMakeFiles/examplesRatio.dir/build
+.PHONY : examplesRatio/fast
 
 # Help Target
 help:
@@ -279,12 +227,8 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... html"
-	@echo "... VectorD"
-	@echo "... main1"
-	@echo "... main2"
-	@echo "... main3"
-	@echo "... simpleProject"
-	@echo "... stabilisation"
+	@echo "... Ratio"
+	@echo "... examplesRatio"
 .PHONY : help
 
 

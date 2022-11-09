@@ -1,4 +1,4 @@
-# Install script for directory: /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib
+# Install script for directory: /home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,31 +44,31 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/usr/local/include/VectorD/VectorD.hpp")
+   "/usr/local/include/Ratio/Ratio.hpp")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/include/VectorD" TYPE FILE FILES "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/include/VectorD.hpp")
+file(INSTALL DESTINATION "/usr/local/include/Ratio" TYPE FILE FILES "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/include/Ratio.hpp")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/usr/local/lib/libVectorD.a")
+   "/usr/local/lib/libRatio.a")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/INTERFACE/libVectorD.a")
+file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/INTERFACE/libRatio.a")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/INTERFACE/doc/cmake_install.cmake")
+  include("/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/INTERFACE/doc/cmake_install.cmake")
 
 endif()
 

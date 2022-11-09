@@ -1,4 +1,4 @@
-# Install script for directory: /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/doc
+# Install script for directory: /home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/doc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

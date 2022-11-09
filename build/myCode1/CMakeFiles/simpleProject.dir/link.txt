@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/simpleProject.dir/src/main.cpp.o CMakeFiles/simpleProject.dir/src/plop.cpp.o -o ../bin/simpleProject 

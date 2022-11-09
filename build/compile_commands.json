@@ -1,37 +1,17 @@
 [
 {
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode1",
-  "command": "/usr/bin/g++  -I/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/include -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/simpleProject.dir/src/main.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/main.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/main.cpp"
+  "directory": "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/INTERFACE",
+  "command": "/usr/bin/g++  -I\"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/include\" -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/Ratio.dir/src/Ratio.cpp.o -c \"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/src/Ratio.cpp\"",
+  "file": "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/src/Ratio.cpp"
 },
 {
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode1",
-  "command": "/usr/bin/g++  -I/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/include -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/simpleProject.dir/src/plop.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/plop.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode1/src/plop.cpp"
+  "directory": "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/myExamples",
+  "command": "/usr/bin/g++  -I\"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/include\" -I\"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/myExamples/include\" -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/examplesRatio.dir/src/main.cpp.o -c \"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/myExamples/src/main.cpp\"",
+  "file": "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/myExamples/src/main.cpp"
 },
 {
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode2",
-  "command": "/usr/bin/g++  -I/usr/include/eigen3 -isystem /usr/include/opencv4 -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/stabilisation.dir/src/imageStabilization.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode2/src/imageStabilization.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode2/src/imageStabilization.cpp"
-},
-{
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/INTERFACE",
-  "command": "/usr/bin/g++  -I/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/include -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/VectorD.dir/src/VectorD.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/src/VectorD.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/src/VectorD.cpp"
-},
-{
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode3",
-  "command": "/usr/bin/g++  -I/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/include -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main3.dir/src/main3.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode3/src/main3.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode3/src/main3.cpp"
-},
-{
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode3",
-  "command": "/usr/bin/g++  -I/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/include -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main2.dir/src/main2.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode3/src/main2.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode3/src/main2.cpp"
-},
-{
-  "directory": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/myCode3",
-  "command": "/usr/bin/g++  -I/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myLib/include -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main1.dir/src/main1.cpp.o -c /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode3/src/main1.cpp",
-  "file": "/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/myCode3/src/main1.cpp"
+  "directory": "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/myExamples",
+  "command": "/usr/bin/g++  -I\"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/libRatio/include\" -I\"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/myExamples/include\" -g -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/examplesRatio.dir/src/plop.cpp.o -c \"/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/myExamples/src/plop.cpp\"",
+  "file": "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/myExamples/src/plop.cpp"
 }
 ]

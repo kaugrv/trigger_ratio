@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 
 # give a name to the project
-project(myCmakeTest)
+project(triggerRatio)
 
 # display VERBOSE messages : cmake --log-level=VERBOSE ..
 
@@ -39,21 +39,14 @@ file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 
-# add myCode1
-message(STATUS "myCode1 cmake part ..." )
-add_subdirectory(myCode1)
 
-# add myCode2
-message(STATUS "myCode2 cmake part ..." )
-add_subdirectory(myCode2)
+# add libRatio
+message(STATUS "libRatio cmake part ..." )
+add_subdirectory(libRatio INTERFACE)
+include_directories(${CMAKE_SOURCE_DIR}/libRatio/include) # important : other projects called by this cmake will know this include directory
 
-# add myLib
-message(STATUS "myLib cmake part ..." )
-add_subdirectory(myLib INTERFACE)
-include_directories(${CMAKE_SOURCE_DIR}/myLib/include) # important : other projects called by this cmake will know this include directory
-
-# add myCode3
-message(STATUS "myCode3 cmake part ..." )
-add_subdirectory(myCode3)
+# add myExamples
+message(STATUS "myExamples cmake part ..." )
+add_subdirectory(myExamples)
 
 

@@ -63,35 +63,29 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet
+CMAKE_SOURCE_DIR = "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build
+CMAKE_BINARY_DIR = "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build"
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: myCode1/all
-all: myCode2/all
 all: INTERFACE/all
-all: myCode3/all
+all: myExamples/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: myCode1/preinstall
-preinstall: myCode2/preinstall
 preinstall: INTERFACE/preinstall
-preinstall: myCode3/preinstall
+preinstall: myExamples/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: myCode1/clean
-clean: myCode2/clean
 clean: INTERFACE/clean
-clean: myCode3/clean
+clean: myExamples/clean
 
 .PHONY : clean
 
@@ -99,7 +93,7 @@ clean: myCode3/clean
 # Directory level rules for directory INTERFACE
 
 # Recursive "all" directory target.
-INTERFACE/all: INTERFACE/CMakeFiles/VectorD.dir/all
+INTERFACE/all: INTERFACE/CMakeFiles/Ratio.dir/all
 INTERFACE/all: INTERFACE/doc/all
 
 .PHONY : INTERFACE/all
@@ -110,7 +104,7 @@ INTERFACE/preinstall: INTERFACE/doc/preinstall
 .PHONY : INTERFACE/preinstall
 
 # Recursive "clean" directory target.
-INTERFACE/clean: INTERFACE/CMakeFiles/VectorD.dir/clean
+INTERFACE/clean: INTERFACE/CMakeFiles/Ratio.dir/clean
 INTERFACE/clean: INTERFACE/doc/clean
 
 .PHONY : INTERFACE/clean
@@ -134,143 +128,49 @@ INTERFACE/doc/clean: INTERFACE/doc/CMakeFiles/html.dir/clean
 .PHONY : INTERFACE/doc/clean
 
 #=============================================================================
-# Directory level rules for directory myCode1
+# Directory level rules for directory myExamples
 
 # Recursive "all" directory target.
-myCode1/all: myCode1/CMakeFiles/simpleProject.dir/all
+myExamples/all: myExamples/CMakeFiles/examplesRatio.dir/all
 
-.PHONY : myCode1/all
-
-# Recursive "preinstall" directory target.
-myCode1/preinstall:
-
-.PHONY : myCode1/preinstall
-
-# Recursive "clean" directory target.
-myCode1/clean: myCode1/CMakeFiles/simpleProject.dir/clean
-
-.PHONY : myCode1/clean
-
-#=============================================================================
-# Directory level rules for directory myCode2
-
-# Recursive "all" directory target.
-myCode2/all: myCode2/CMakeFiles/stabilisation.dir/all
-
-.PHONY : myCode2/all
+.PHONY : myExamples/all
 
 # Recursive "preinstall" directory target.
-myCode2/preinstall:
+myExamples/preinstall:
 
-.PHONY : myCode2/preinstall
-
-# Recursive "clean" directory target.
-myCode2/clean: myCode2/CMakeFiles/stabilisation.dir/clean
-
-.PHONY : myCode2/clean
-
-#=============================================================================
-# Directory level rules for directory myCode3
-
-# Recursive "all" directory target.
-myCode3/all: myCode3/CMakeFiles/main3.dir/all
-myCode3/all: myCode3/CMakeFiles/main2.dir/all
-myCode3/all: myCode3/CMakeFiles/main1.dir/all
-
-.PHONY : myCode3/all
-
-# Recursive "preinstall" directory target.
-myCode3/preinstall:
-
-.PHONY : myCode3/preinstall
+.PHONY : myExamples/preinstall
 
 # Recursive "clean" directory target.
-myCode3/clean: myCode3/CMakeFiles/main3.dir/clean
-myCode3/clean: myCode3/CMakeFiles/main2.dir/clean
-myCode3/clean: myCode3/CMakeFiles/main1.dir/clean
+myExamples/clean: myExamples/CMakeFiles/examplesRatio.dir/clean
 
-.PHONY : myCode3/clean
+.PHONY : myExamples/clean
 
 #=============================================================================
-# Target rules for target myCode1/CMakeFiles/simpleProject.dir
+# Target rules for target INTERFACE/CMakeFiles/Ratio.dir
 
 # All Build rule for target.
-myCode1/CMakeFiles/simpleProject.dir/all:
-	$(MAKE) $(MAKESILENT) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/depend
-	$(MAKE) $(MAKESILENT) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num=9,10,11 "Built target simpleProject"
-.PHONY : myCode1/CMakeFiles/simpleProject.dir/all
+INTERFACE/CMakeFiles/Ratio.dir/all:
+	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/depend
+	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" --progress-num=1,2 "Built target Ratio"
+.PHONY : INTERFACE/CMakeFiles/Ratio.dir/all
 
 # Build rule for subdir invocation for target.
-myCode1/CMakeFiles/simpleProject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myCode1/CMakeFiles/simpleProject.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
-.PHONY : myCode1/CMakeFiles/simpleProject.dir/rule
+INTERFACE/CMakeFiles/Ratio.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 INTERFACE/CMakeFiles/Ratio.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 0
+.PHONY : INTERFACE/CMakeFiles/Ratio.dir/rule
 
 # Convenience name for target.
-simpleProject: myCode1/CMakeFiles/simpleProject.dir/rule
+Ratio: INTERFACE/CMakeFiles/Ratio.dir/rule
 
-.PHONY : simpleProject
-
-# clean rule for target.
-myCode1/CMakeFiles/simpleProject.dir/clean:
-	$(MAKE) $(MAKESILENT) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/clean
-.PHONY : myCode1/CMakeFiles/simpleProject.dir/clean
-
-#=============================================================================
-# Target rules for target myCode2/CMakeFiles/stabilisation.dir
-
-# All Build rule for target.
-myCode2/CMakeFiles/stabilisation.dir/all:
-	$(MAKE) $(MAKESILENT) -f myCode2/CMakeFiles/stabilisation.dir/build.make myCode2/CMakeFiles/stabilisation.dir/depend
-	$(MAKE) $(MAKESILENT) -f myCode2/CMakeFiles/stabilisation.dir/build.make myCode2/CMakeFiles/stabilisation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num=12,13 "Built target stabilisation"
-.PHONY : myCode2/CMakeFiles/stabilisation.dir/all
-
-# Build rule for subdir invocation for target.
-myCode2/CMakeFiles/stabilisation.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myCode2/CMakeFiles/stabilisation.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
-.PHONY : myCode2/CMakeFiles/stabilisation.dir/rule
-
-# Convenience name for target.
-stabilisation: myCode2/CMakeFiles/stabilisation.dir/rule
-
-.PHONY : stabilisation
+.PHONY : Ratio
 
 # clean rule for target.
-myCode2/CMakeFiles/stabilisation.dir/clean:
-	$(MAKE) $(MAKESILENT) -f myCode2/CMakeFiles/stabilisation.dir/build.make myCode2/CMakeFiles/stabilisation.dir/clean
-.PHONY : myCode2/CMakeFiles/stabilisation.dir/clean
-
-#=============================================================================
-# Target rules for target INTERFACE/CMakeFiles/VectorD.dir
-
-# All Build rule for target.
-INTERFACE/CMakeFiles/VectorD.dir/all:
-	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/depend
-	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num=1,2 "Built target VectorD"
-.PHONY : INTERFACE/CMakeFiles/VectorD.dir/all
-
-# Build rule for subdir invocation for target.
-INTERFACE/CMakeFiles/VectorD.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 INTERFACE/CMakeFiles/VectorD.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
-.PHONY : INTERFACE/CMakeFiles/VectorD.dir/rule
-
-# Convenience name for target.
-VectorD: INTERFACE/CMakeFiles/VectorD.dir/rule
-
-.PHONY : VectorD
-
-# clean rule for target.
-INTERFACE/CMakeFiles/VectorD.dir/clean:
-	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/clean
-.PHONY : INTERFACE/CMakeFiles/VectorD.dir/clean
+INTERFACE/CMakeFiles/Ratio.dir/clean:
+	$(MAKE) $(MAKESILENT) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/clean
+.PHONY : INTERFACE/CMakeFiles/Ratio.dir/clean
 
 #=============================================================================
 # Target rules for target INTERFACE/doc/CMakeFiles/html.dir
@@ -279,14 +179,14 @@ INTERFACE/CMakeFiles/VectorD.dir/clean:
 INTERFACE/doc/CMakeFiles/html.dir/all:
 	$(MAKE) $(MAKESILENT) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/depend
 	$(MAKE) $(MAKESILENT) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num= "Built target html"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" --progress-num= "Built target html"
 .PHONY : INTERFACE/doc/CMakeFiles/html.dir/all
 
 # Build rule for subdir invocation for target.
 INTERFACE/doc/CMakeFiles/html.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 INTERFACE/doc/CMakeFiles/html.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 0
 .PHONY : INTERFACE/doc/CMakeFiles/html.dir/rule
 
 # Convenience name for target.
@@ -300,85 +200,31 @@ INTERFACE/doc/CMakeFiles/html.dir/clean:
 .PHONY : INTERFACE/doc/CMakeFiles/html.dir/clean
 
 #=============================================================================
-# Target rules for target myCode3/CMakeFiles/main3.dir
+# Target rules for target myExamples/CMakeFiles/examplesRatio.dir
 
 # All Build rule for target.
-myCode3/CMakeFiles/main3.dir/all: INTERFACE/CMakeFiles/VectorD.dir/all
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main3.dir/build.make myCode3/CMakeFiles/main3.dir/depend
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main3.dir/build.make myCode3/CMakeFiles/main3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num=7,8 "Built target main3"
-.PHONY : myCode3/CMakeFiles/main3.dir/all
+myExamples/CMakeFiles/examplesRatio.dir/all:
+	$(MAKE) $(MAKESILENT) -f myExamples/CMakeFiles/examplesRatio.dir/build.make myExamples/CMakeFiles/examplesRatio.dir/depend
+	$(MAKE) $(MAKESILENT) -f myExamples/CMakeFiles/examplesRatio.dir/build.make myExamples/CMakeFiles/examplesRatio.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" --progress-num=3,4,5 "Built target examplesRatio"
+.PHONY : myExamples/CMakeFiles/examplesRatio.dir/all
 
 # Build rule for subdir invocation for target.
-myCode3/CMakeFiles/main3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myCode3/CMakeFiles/main3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
-.PHONY : myCode3/CMakeFiles/main3.dir/rule
+myExamples/CMakeFiles/examplesRatio.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myExamples/CMakeFiles/examplesRatio.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/6ima2/wendy.gervais/Documents/Projet PROG /trigger-ratio/build/CMakeFiles" 0
+.PHONY : myExamples/CMakeFiles/examplesRatio.dir/rule
 
 # Convenience name for target.
-main3: myCode3/CMakeFiles/main3.dir/rule
+examplesRatio: myExamples/CMakeFiles/examplesRatio.dir/rule
 
-.PHONY : main3
-
-# clean rule for target.
-myCode3/CMakeFiles/main3.dir/clean:
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main3.dir/build.make myCode3/CMakeFiles/main3.dir/clean
-.PHONY : myCode3/CMakeFiles/main3.dir/clean
-
-#=============================================================================
-# Target rules for target myCode3/CMakeFiles/main2.dir
-
-# All Build rule for target.
-myCode3/CMakeFiles/main2.dir/all: INTERFACE/CMakeFiles/VectorD.dir/all
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main2.dir/build.make myCode3/CMakeFiles/main2.dir/depend
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main2.dir/build.make myCode3/CMakeFiles/main2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num=5,6 "Built target main2"
-.PHONY : myCode3/CMakeFiles/main2.dir/all
-
-# Build rule for subdir invocation for target.
-myCode3/CMakeFiles/main2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myCode3/CMakeFiles/main2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
-.PHONY : myCode3/CMakeFiles/main2.dir/rule
-
-# Convenience name for target.
-main2: myCode3/CMakeFiles/main2.dir/rule
-
-.PHONY : main2
+.PHONY : examplesRatio
 
 # clean rule for target.
-myCode3/CMakeFiles/main2.dir/clean:
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main2.dir/build.make myCode3/CMakeFiles/main2.dir/clean
-.PHONY : myCode3/CMakeFiles/main2.dir/clean
-
-#=============================================================================
-# Target rules for target myCode3/CMakeFiles/main1.dir
-
-# All Build rule for target.
-myCode3/CMakeFiles/main1.dir/all: INTERFACE/CMakeFiles/VectorD.dir/all
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main1.dir/build.make myCode3/CMakeFiles/main1.dir/depend
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main1.dir/build.make myCode3/CMakeFiles/main1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles --progress-num=3,4 "Built target main1"
-.PHONY : myCode3/CMakeFiles/main1.dir/all
-
-# Build rule for subdir invocation for target.
-myCode3/CMakeFiles/main1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myCode3/CMakeFiles/main1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6ima2/wendy.gervais/Documents/PROG_ven/TP6/projet/projet/build/CMakeFiles 0
-.PHONY : myCode3/CMakeFiles/main1.dir/rule
-
-# Convenience name for target.
-main1: myCode3/CMakeFiles/main1.dir/rule
-
-.PHONY : main1
-
-# clean rule for target.
-myCode3/CMakeFiles/main1.dir/clean:
-	$(MAKE) $(MAKESILENT) -f myCode3/CMakeFiles/main1.dir/build.make myCode3/CMakeFiles/main1.dir/clean
-.PHONY : myCode3/CMakeFiles/main1.dir/clean
+myExamples/CMakeFiles/examplesRatio.dir/clean:
+	$(MAKE) $(MAKESILENT) -f myExamples/CMakeFiles/examplesRatio.dir/build.make myExamples/CMakeFiles/examplesRatio.dir/clean
+.PHONY : myExamples/CMakeFiles/examplesRatio.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
