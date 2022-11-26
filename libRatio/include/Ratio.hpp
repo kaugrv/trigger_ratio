@@ -49,13 +49,8 @@ class Ratio {
         //~Ratio();
 
         // getter
-        const T& num();
-        const T& den();
-
-
-        // <<
-        template<class U>
-        friend std::ostream &operator<<(std::ostream &os, const Ratio<U> &val);
+        const T& num() const;
+        const T& den()const;
 
 };
 
@@ -96,12 +91,12 @@ Ratio<T>::Ratio(const T val)
 }*/
 
 template <typename T>
-const T& Ratio<T>::num(){
+const T& Ratio<T>::num() const{
     return m_num;
 }
 
 template <typename T>
-const T& Ratio<T>::den(){
+const T& Ratio<T>::den() const{
     return m_den;
 }
 
@@ -112,9 +107,7 @@ const T& Ratio<T>::den(){
 // <<
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
-    //os << val.num() << " / " << val.den();
-    os << "//";
-
+    os << val.num() << "/" << val.den();
     return os;
 }
 
