@@ -6,6 +6,8 @@ project(examplesRatio)
 # file to compile and name of the executable
 add_executable(examplesRatio src/main.cpp src/plop.cpp include/plop.hpp)
 
+#add dependencies
+target_link_libraries(examplesRatio PRIVATE libRatio)
 # include directory
 target_include_directories(examplesRatio PRIVATE "include")
 

@@ -30,4 +30,94 @@
 
 
 
+template <typename T>
+class Ratio {
+    
+    private:
+        T m_num;
+        T m_den;
+
+    public :
+
+        // constructors
+        Ratio();
+        //Ratio(const T val);
+        Ratio(const T num, const T den);
+        Ratio(const Ratio &val);
+
+        // destructor
+        //~Ratio();
+
+        // getter
+        const T& num();
+        const T& den();
+
+
+        // <<
+        template<class U>
+        friend std::ostream &operator<<(std::ostream &os, const Ratio<U> &val);
+
+};
+
+
+
+
+// constructor
+
+//default
+template <typename T>
+Ratio<T>::Ratio()
+: m_num(),m_den(T(1))
+{
+
+}
+
+// version without conversion
+template <typename T>
+Ratio<T>::Ratio(const T num, const T den)
+: m_num(num), m_den(den)
+{
+
+}
+
+// copy
+template <typename T>
+Ratio<T>::Ratio(const Ratio<T> &val)
+: m_num(val.m_num), m_den(val.m_den)
+{
+
+}
+
+/*template <typename T>
+Ratio<T>::Ratio(const T val)
+:
+{
+
+}*/
+
+template <typename T>
+const T& Ratio<T>::num(){
+    return m_num;
+}
+
+template <typename T>
+const T& Ratio<T>::den(){
+    return m_den;
+}
+
+
+
+// operators
+
+// <<
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
+    //os << val.num() << " / " << val.den();
+    os << "//";
+
+    return os;
+}
+
+
+
 #endif
