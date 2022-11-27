@@ -60,10 +60,6 @@ class Ratio {
         // inversion 
         Ratio invert();
 
-        // convertisseur 
-        //Ratio convertFloatToRatio(float val, uint nbIter = 100);
-
-
 };
 
 
