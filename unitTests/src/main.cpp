@@ -8,53 +8,45 @@
 #include "Ratio.hpp"
 
 
-/////////////////////////////////////////////////////
 // constructors
 
 TEST (RatioConstructor, defaultConstructor) { 
-	ASSERT_EQ (0, 0);
+  Ratio<int> r;
+	ASSERT_EQ (r.num(), 0);
 }
 
 
 
+// operators
 
-// /////////////////////////////////////////////////////
-// // arithmetic
+TEST (RatioOperators, times) {
 
-// TEST (VectorDArithmetic, plus) {
+	const size_t maxSize = 1000;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-// 	const size_t maxSize = 1000;  // max size of the tested vectors
-// 	std::mt19937 generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-// 	// run many times the same test with different values
-// 	for(int run=0; run<100; ++run){
+	for(int run=0; run<10000; ++run) {
 
-// 		// define a vector dimension
-// 		const size_t dim = uniformIntDistribution(generator);
+    double num1 = gen();
+    double den1 = gen();
 
-// 		// generate random data
-// 		std::vector<double> data1(dim), data2(dim);
-// 		std::generate(data1.begin(), data1.end(), gen);
-// 		std::generate(data2.begin(), data2.end(), gen);
+    double num2 = gen();
+    double den2 = gen();
 
-// 		// build the corresponding VectorD
-// 		VectorD vec1(dim), vec2(dim), vec3(dim);
-// 		for(size_t i=0; i<dim; ++i){
-// 			vec1[i] = data1[i];
-// 			vec2[i] = data2[i];
-// 		}
+    Ratio r1(num1, den1), r2(num2,den2);
+    Ratio r3(num1*num2, den1*den2);
 
-// 		vec3 = vec1 + vec2;
-// 		ASSERT_EQ (vec3.size(), dim);
+    ASSERT_EQ(r1*r2, r3);
 
-// 		for(size_t i=0; i<dim; ++i){
-// 	    	ASSERT_DOUBLE_EQ (vec3[i], data1[i] + data2[i]);    // EXPECT_DOUBLE_EQ would be fine too
-// 		}
-// 	}
-// }
+
+	}
+}
+
+
+
 
 
 

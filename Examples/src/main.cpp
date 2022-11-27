@@ -6,12 +6,14 @@
 
 int main() {
 
-    //Ratio<int> test(3,4);
-    Ratio<int> val;
-    //std::cout << val;
-    std::cout << val.den() << std::endl;
+    Ratio<int> r1(3,4);
+    Ratio<int> r2;
 
-    std::cout << val << std::endl;
+    std::cout << r1 << std::endl;
+    std::cout << r2 << std::endl;
+
+    Ratio r3 = r1*r2;
+    std::cout << (r3 == r1*r2) << std::endl;
     
     return 0;
 }
