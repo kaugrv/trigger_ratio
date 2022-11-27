@@ -6,9 +6,6 @@
 
 int main() {
 
-    // appel de plop
-    plop();
-
     //Ratio<int> test(3,4);
     Ratio<int> val;
     //std::cout << val;

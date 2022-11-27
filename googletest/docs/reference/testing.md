@@ -70,7 +70,7 @@ body, the test parameter can be accessed with the `GetParam()` function (see
 [`WithParamInterface`](#WithParamInterface)). For example:
 
 ```cpp
-TEST_P(MyTestSuite, DoesSomething) {
+TEST_P(unitTestsuite, DoesSomething) {
   ...
   EXPECT_TRUE(DoSomething(GetParam()));
   ...
@@ -120,9 +120,9 @@ custom function can be used for more control:
 
 ```cpp
 INSTANTIATE_TEST_SUITE_P(
-    MyInstantiation, MyTestSuite,
+    MyInstantiation, unitTestsuite,
     ::testing::Values(...),
-    [](const ::testing::TestParamInfo<MyTestSuite::ParamType>& info) {
+    [](const ::testing::TestParamInfo<unitTestsuite::ParamType>& info) {
       // Can use info.param here to generate the test suffix
       std::string name = ...
       return name;

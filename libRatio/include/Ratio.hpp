@@ -48,7 +48,7 @@ class Ratio {
         // destructor
         //~Ratio();
 
-        // getter
+        // getters
         const T& num() const;
         const T& den()const;
 
@@ -59,7 +59,7 @@ class Ratio {
 
 // constructor
 
-//default
+// default constructor
 template <typename T>
 Ratio<T>::Ratio()
 : m_num(),m_den(T(1))
@@ -67,7 +67,7 @@ Ratio<T>::Ratio()
 
 }
 
-// version without conversion
+// constructor (version without conversion)
 template <typename T>
 Ratio<T>::Ratio(const T num, const T den)
 : m_num(num), m_den(den)
@@ -75,7 +75,7 @@ Ratio<T>::Ratio(const T num, const T den)
 
 }
 
-// copy
+// copy constructor
 template <typename T>
 Ratio<T>::Ratio(const Ratio<T> &val)
 : m_num(val.m_num), m_den(val.m_den)
@@ -90,11 +90,14 @@ Ratio<T>::Ratio(const T val)
 
 }*/
 
+
+// numerator getter
 template <typename T>
 const T& Ratio<T>::num() const{
     return m_num;
 }
 
+// denominator getter
 template <typename T>
 const T& Ratio<T>::den() const{
     return m_den;
