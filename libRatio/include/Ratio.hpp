@@ -49,9 +49,9 @@ class Ratio {
         // destructor
         //~Ratio();
 
-        // getter
+        // getters
         const T& num() const;
-        const T& den()const;
+        const T& den() const;
 
         // operator
         Ratio operator+(const Ratio &val) const;
@@ -60,6 +60,13 @@ class Ratio {
         // inversion 
         Ratio invert();
 
+        /// \brief Multiplies 2 rationals
+        /// \return The product of 2
+        Ratio<T> operator*(const Ratio<T> &val) const;
+
+        /// \brief Checks if 2 rationnals are equal
+        /// \return 1 (True) or 0 (False)
+        bool operator==(const Ratio<T> &val) const;
 };
 
 
@@ -67,7 +74,7 @@ class Ratio {
 
 // constructor
 
-//default
+// default constructor
 template <typename T>
 Ratio<T>::Ratio()
 : m_num(),m_den(T(1))
@@ -75,23 +82,18 @@ Ratio<T>::Ratio()
 
 }
 
-template <typename T>
-Ratio<T>::Ratio(const T val)
-: m_num(val), m_den(1)
-{
-
-}
-
-
-// version without conversion
+// constructor (version without conversion)
 template <typename T>
 Ratio<T>::Ratio(const T num, const T den)
 : m_num(num), m_den(den)
-{
+{ 
+    if (num==0) {
+        m_den=1;
+    }
 
 }
 
-// copy
+// copy constructor
 template <typename T>
 Ratio<T>::Ratio(const Ratio<T> &val)
 : m_num(val.m_num), m_den(val.m_den)
@@ -105,6 +107,7 @@ const T& Ratio<T>::num() const{
     return m_num;
 }
 
+// denominator getter
 template <typename T>
 const T& Ratio<T>::den() const{
     return m_den;
@@ -122,6 +125,21 @@ template <typename T>
 std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
     os << val.num() << "/" << val.den();
     return os;
+}
+
+// *
+template <typename T>
+Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
+{
+	Ratio<T> result = Ratio(T(this->num()*val.num()), T(this->den()*val.den()));
+    return result;
+}
+
+// ==
+template <typename T>
+bool Ratio<T>::operator==(const Ratio<T> &val) const
+{
+    return (T(this->num()==val.num()) && T(this->den()==val.den()));
 }
 
 

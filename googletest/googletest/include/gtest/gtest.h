@@ -2439,7 +2439,7 @@ GTEST_API_ std::string TempDir();
 //   int data_;
 // };
 //
-// void RegisterMyTests(const std::vector<int>& values) {
+// void RegisterunitTests(const std::vector<int>& values) {
 //   for (int v : values) {
 //     ::testing::RegisterTest(
 //         "MyFixture", ("Test" + std::to_string(v)).c_str(), nullptr,
@@ -2453,7 +2453,7 @@ GTEST_API_ std::string TempDir();
 // int main(int argc, char** argv) {
 //   ::testing::InitGoogleTest(&argc, argv);
 //   std::vector<int> values_to_test = LoadValuesFromConfig();
-//   RegisterMyTests(values_to_test);
+//   RegisterunitTests(values_to_test);
 //   ...
 //   return RUN_ALL_TESTS();
 // }

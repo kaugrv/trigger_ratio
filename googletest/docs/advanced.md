@@ -1184,14 +1184,14 @@ alphanumeric characters. In particular, they
 [should not contain underscores](faq.md#why-should-test-suite-names-and-test-names-not-contain-underscore)
 
 ```c++
-class MyTestSuite : public testing::TestWithParam<int> {};
+class unitTestsuite : public testing::TestWithParam<int> {};
 
-TEST_P(MyTestSuite, MyTest)
+TEST_P(unitTestsuite, MyTest)
 {
   std::cout << "Example Test Param: " << GetParam() << std::endl;
 }
 
-INSTANTIATE_TEST_SUITE_P(MyGroup, MyTestSuite, testing::Range(0, 10),
+INSTANTIATE_TEST_SUITE_P(MyGroup, unitTestsuite, testing::Range(0, 10),
                          testing::PrintToStringParamName());
 ```
 
@@ -1205,15 +1205,15 @@ for conciseness:
 ```c++
 enum class MyType { MY_FOO = 0, MY_BAR = 1 };
 
-class MyTestSuite : public testing::TestWithParam<std::tuple<MyType, std::string>> {
+class unitTestsuite : public testing::TestWithParam<std::tuple<MyType, std::string>> {
 };
 
 INSTANTIATE_TEST_SUITE_P(
-    MyGroup, MyTestSuite,
+    MyGroup, unitTestsuite,
     testing::Combine(
         testing::Values(MyType::MY_FOO, MyType::MY_BAR),
         testing::Values("A", "B")),
-    [](const testing::TestParamInfo<MyTestSuite::ParamType>& info) {
+    [](const testing::TestParamInfo<unitTestsuite::ParamType>& info) {
       std::string name = absl::StrCat(
           std::get<0>(info.param) == MyType::MY_FOO ? "Foo" : "Bar",
           std::get<1>(info.param));
@@ -1585,7 +1585,7 @@ class MyTest : public MyFixture {
   int data_;
 };
 
-void RegisterMyTests(const std::vector<int>& values) {
+void RegisterunitTests(const std::vector<int>& values) {
   for (int v : values) {
     testing::RegisterTest(
         "MyFixture", ("Test" + std::to_string(v)).c_str(), nullptr,
@@ -1599,7 +1599,7 @@ void RegisterMyTests(const std::vector<int>& values) {
 int main(int argc, char** argv) {
   testing::InitGoogleTest(&argc, argv);
   std::vector<int> values_to_test = LoadValuesFromConfig();
-  RegisterMyTests(values_to_test);
+  RegisterunitTests(values_to_test);
   ...
   return RUN_ALL_TESTS();
 }
