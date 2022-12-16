@@ -1,7 +1,6 @@
 #include <iostream>
 #include <math.h>
 
-
 #ifndef __RATIO__HPP
 #define __RATIO__HPP
 
@@ -11,7 +10,7 @@
 /// \image html myImage.jpg
 /// \tableofcontents
 /// \section instroduction_sec What for?
-/// VectorD is a super tool.
+/// Trigger Ratio Library.
 /// \section install_bigsec How to install
 /// \subsection dependencies_sec Dependecies
 /// \li nothing
@@ -29,8 +28,8 @@
 
 
 
-
-
+/// \class Ratio
+/// \brief class defining rationals (way of )
 template <typename T>
 class Ratio {
     
@@ -46,8 +45,8 @@ class Ratio {
         Ratio(const T num, const T den);
         Ratio(const Ratio &val);
 
-        // destructor
-        //~Ratio();
+        /// \brief destructor
+        ~Ratio();
 
         // getters
         const T& num() const;
@@ -55,7 +54,6 @@ class Ratio {
 
         // operator
         Ratio operator+(const Ratio &val) const;
-
 
         // inversion 
         Ratio invert();
@@ -101,6 +99,12 @@ Ratio<T>::Ratio(const Ratio<T> &val)
 
 }
 
+// destructor
+template <typename T>
+Ratio<T>::~Ratio() {
+
+}
+
 // GETTER
 template <typename T>
 const T& Ratio<T>::num() const{
@@ -118,7 +122,6 @@ template <typename T>
 Ratio<T>  Ratio<T>::operator+(const Ratio<T> &val)const{
     return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
 }
-
 
 // <<
 template <typename T>
@@ -142,14 +145,16 @@ bool Ratio<T>::operator==(const Ratio<T> &val) const
     return (T(this->num()==val.num()) && T(this->den()==val.den()));
 }
 
-
 // inversion
 template <typename T>
 Ratio<T> Ratio<T>::invert(){
     return Ratio(m_den, m_num);
 }
 
-//convertisseur :
+
+
+
+//converter :
 //first version, only works with positive numbers
 template <typename T = int>
 Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
