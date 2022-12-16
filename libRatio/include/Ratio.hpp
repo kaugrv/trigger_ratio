@@ -28,7 +28,11 @@
 /// 	- or [path to build]/INTERFACE/doc/doc-doxygen/html/index.html
 
 
+// template<typename T>
+// Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20);
 
+// template <typename T = int>
+// Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20);
 
 
 template <typename T>
@@ -41,9 +45,18 @@ class Ratio {
     public :
 
         // constructors
-        Ratio();
-        Ratio(const T val);
-        Ratio(const T num, const T den);
+        Ratio():m_num(),m_den(T(1)){}
+
+        template<typename U>
+        Ratio(const U val)
+        :m_num(val), m_den(1)
+        {
+        }
+
+        template<typename U, typename V>
+        Ratio(const U num, const V den)
+            :m_num(num), m_den(den){ if (num==0) m_den=1;}
+        
         Ratio(const Ratio &val);
 
         // destructor
@@ -64,6 +77,15 @@ class Ratio {
         /// \return The product of 2
         Ratio<T> operator*(const Ratio<T> &val) const;
 
+
+        /// \brief Multiplies a rational with a float
+        /// \return The product of 2
+        template<typename U>
+        Ratio<T> operator*(const U &val) const{
+            Ratio<T> res = *this*Ratio<T>(val);
+            return res;
+        }
+
         /// \brief Checks if 2 rationnals are equal
         /// \return 1 (True) or 0 (False)
         bool operator==(const Ratio<T> &val) const;
@@ -74,24 +96,6 @@ class Ratio {
 
 // constructor
 
-// default constructor
-template <typename T>
-Ratio<T>::Ratio()
-: m_num(),m_den(T(1))
-{
-
-}
-
-// constructor (version without conversion)
-template <typename T>
-Ratio<T>::Ratio(const T num, const T den)
-: m_num(num), m_den(den)
-{ 
-    if (num==0) {
-        m_den=1;
-    }
-
-}
 
 // copy constructor
 template <typename T>
@@ -128,12 +132,18 @@ std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
 }
 
 // *
+// with two rationnals
 template <typename T>
 Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
 {
 	Ratio<T> result = Ratio(T(this->num()*val.num()), T(this->den()*val.den()));
     return result;
 }
+
+
+
+
+
 
 // ==
 template <typename T>
@@ -152,7 +162,7 @@ Ratio<T> Ratio<T>::invert(){
 //convertisseur :
 //first version, only works with positive numbers
 template <typename T = int>
-Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
+Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
     std::cout << val << std::endl;
 
     if (val == 0.) return Ratio<T>();
@@ -160,14 +170,23 @@ Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
     if (nbIter == 0) return Ratio<T>();
 
     if (val < 1){
-        return convertFloatToRatio(1.0/val,nbIter).invert();
+        return convertPosFloatToRatio(1.0/val,nbIter).invert();
     }
 
     int q = std::floor(val);
-    return Ratio<T>(Ratio<T>(q,1)+convertFloatToRatio(val-q,nbIter-1));
+    return Ratio<T>(Ratio<T>(q,1)+convertPosFloatToRatio(val-q,nbIter-1));
 
 }
 
+
+// adaptation pour les négatifs
+template<typename T = int>
+Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
+    int sign = -(std::signbit(val)*2-1);
+    std::cout << "signe : " << sign<< std::endl;
+    std::cout << "val : " << val << "abs(val) : " << sign*val<<  std::endl;
+    return convertPosFloatToRatio(sign*val,nbIter)*sign;
+}
 
 
 
