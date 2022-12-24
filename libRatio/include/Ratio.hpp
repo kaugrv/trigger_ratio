@@ -88,11 +88,20 @@ class Ratio {
         /// \brief Default destructor
         ~Ratio(){}
 
+
         /// \brief Numerator getter
         const T& num() const;
 
         /// \brief Denominator getter
         const T& den() const;
+
+
+        /// \brief Numerator setter
+        void setNum(const T &num);
+
+        /// \brief Denominator setter
+        void setDen(const T &den);
+
 
         /// \brief Returns den/num
         Ratio invert();
@@ -101,6 +110,14 @@ class Ratio {
 
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
+
+        Ratio operator*=(const Ratio &val) const;
+
+        /// @brief negates a rational
+        Ratio operator-() const;
+
+        /// \brief substract 2 rationals
+        Ratio operator-(const Ratio &val) const;
 
         /// \brief Multiplies 2 rationals
         Ratio<T> operator*(const Ratio<T> &val) const;
@@ -121,6 +138,9 @@ class Ratio {
             Ratio<T> res = *this/Ratio<T>(val);
             return res;
         }
+
+
+
 
         
         /// \brief Checks if 2 rationnals are equal
@@ -152,6 +172,51 @@ const T& Ratio<T>::den() const{
     return m_den;
 }
 
+
+// numerator setter
+template <typename T>
+void Ratio<T>::setNum(const T &num){
+    
+    m_num = num;
+    
+    // if num = 0 => it is 0/1
+    if (num == 0) {
+        m_den = 1;
+        return;
+    }
+    
+    T tempNum = m_num;
+    T tempDen = m_den;
+
+    m_num = tempNum/hcd(tempNum,tempDen);
+    m_den = tempDen/hcd(tempNum,tempDen);
+}
+
+
+// denominator setter
+template <typename T>
+void Ratio<T>::setDen(const T &den){
+    
+    // check if the sign needs to be update
+    if (den < 0){
+        m_den = -den;
+        m_num = -m_num;
+    }
+    else m_den = den;
+
+    // if den = 0 => it is 1/0 : infini
+    if (den== 0) {
+        m_num = 1;
+        return;
+    }
+
+    T tempNum = m_num;
+    T tempDen = m_den;
+
+    m_num = tempNum/hcd(tempNum,tempDen);
+    m_den = tempDen/hcd(tempNum,tempDen);
+}
+
 // inversion
 template <typename T>
 Ratio<T> Ratio<T>::invert(){
@@ -163,6 +228,20 @@ template <typename T>
 Ratio<T>  Ratio<T>::operator+(const Ratio<T> &val)const{
     return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
 }
+
+
+// - unaire
+template <typename T>
+Ratio<T> Ratio<T>::operator-() const{
+    return Ratio<T>(-1*m_num, m_den);
+}
+
+// -
+template <typename T>
+Ratio<T> Ratio<T>::operator-(const Ratio &val) const{
+    return *this + -val;
+}
+
 
 // * - with two rationals
 template <typename T>
