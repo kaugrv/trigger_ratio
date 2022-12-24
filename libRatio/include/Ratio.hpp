@@ -112,20 +112,40 @@ class Ratio {
             return res;
         }
 
-        /// \brief divide 2 rationals
+        /// \brief Division of 2 rationals
         Ratio<T> operator/(const Ratio<T> &val) const;
     
-        /// \brief Multiplies a rational with a scalar
+        /// \brief Divides a rational by a scalar
         template<typename U>
         Ratio<T> operator/(const U &val) const{
             Ratio<T> res = *this/Ratio<T>(val);
             return res;
         }
 
-        
         /// \brief Checks if 2 rationnals are equal
         /// \return 1 (True) or 0 (False)
         bool operator==(const Ratio<T> &val) const;
+
+        /// \brief Checks if 2 rationnals are not equal
+        /// \return 1 (True) or 0 (False)
+        bool operator!=(const Ratio<T> &val) const;
+
+        /// \brief Less than
+        /// \return 1 (True) or 0 (False)
+        bool operator<(const Ratio<T> &val) const;
+
+        /// \brief Greater than
+        /// \return 1 (True) or 0 (False)
+        bool operator>(const Ratio<T> &val) const;
+
+        /// \brief Less or equal than
+        /// \return 1 (True) or 0 (False)
+        bool operator<=(const Ratio<T> &val) const;
+
+        /// \brief Greater or equal than
+        /// \return 1 (True) or 0 (False)
+        bool operator>=(const Ratio<T> &val) const;
+
 };
 
 // <<
@@ -158,37 +178,6 @@ Ratio<T> Ratio<T>::invert(){
     return Ratio(m_den, m_num);
 }
 
-// +
-template <typename T>
-Ratio<T>  Ratio<T>::operator+(const Ratio<T> &val)const{
-    return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
-}
-
-// * - with two rationals
-template <typename T>
-Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
-{
-	Ratio<T> result = Ratio(T(this->num()*val.num()), T(this->den()*val.den()));
-    return result;
-}
-
-
-// / - with two rationals
-
-template<typename T>
-Ratio<T> Ratio<T>::operator/(const Ratio<T> &val) const{
-	Ratio<T> result = Ratio(T(this->num()*val.den()), T(this->den()*val.num()));
-    return result;
-}
-
-// ==
-template <typename T>
-bool Ratio<T>::operator==(const Ratio<T> &val) const
-{
-    return (T(this->num()==val.num()) && T(this->den()==val.den()));
-}
-
-
 /// \brief Converter : first version, only works with positive numbers
 /// \param val float, double... (value to be converted)
 /// \param nbIter
@@ -215,6 +204,87 @@ template<typename T = int>
 Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
     int sign = -(std::signbit(val)*2-1);
     return convertPosFloatToRatio(sign*val,nbIter)*sign;
+}
+
+/// \brief Converts Ratio back to float/double
+/// \param val Ratio
+/// \returns double (by default)
+template<typename T, typename U=double>
+double convertRatioToFloat(Ratio<T> val){
+    return U(val.num())/U(val.den());
+}
+
+// +
+template <typename T>
+Ratio<T> Ratio<T>::operator+(const Ratio<T> &val)const{
+    return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
+}
+
+// * - with two rationals
+template <typename T>
+Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
+{
+	Ratio<T> result = Ratio(T(this->num()*val.num()), T(this->den()*val.den()));
+    return result;
+}
+
+// / - with two rationals
+template<typename T>
+Ratio<T> Ratio<T>::operator/(const Ratio<T> &val) const{
+	Ratio<T> result = Ratio(T(this->num()*val.den()), T(this->den()*val.num()));
+    return result;
+}
+
+// ==
+template <typename T>
+bool Ratio<T>::operator==(const Ratio<T> &val) const
+{
+    return (T(this->num()==val.num()) && T(this->den()==val.den()));
+}
+
+// !=
+template <typename T>
+bool Ratio<T>::operator!=(const Ratio<T> &val) const
+{
+    return !(*this==val);
+}
+
+// <
+template <typename T>
+bool Ratio<T>::operator<(const Ratio<T> &val) const
+{
+    return (T(this->num()*val.den()) > T(val.num()*this->den()));
+}
+
+// >
+template <typename T>
+bool Ratio<T>::operator>(const Ratio<T> &val) const
+{
+    return (T(this->num()*val.den()) > T(val.num()*this->den()));
+}
+
+// <=
+template <typename T>
+bool Ratio<T>::operator>=(const Ratio<T> &val) const
+{
+    return (T(this->num()*val.den()) >= T(val.num()*this->den()));
+}
+
+// >=
+template <typename T>
+bool Ratio<T>::operator<=(const Ratio<T> &val) const
+{
+    return (T(this->num()*val.den()) <= T(val.num()*this->den()));
+}
+
+
+
+
+// Sqrt
+template<typename T>
+Ratio<T> sqrt(const Ratio<T> &val) {
+	Ratio<T> result = convertFloatToRatio<T>(sqrt(convertRatioToFloat(val)));
+    return result;
 }
 
 

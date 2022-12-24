@@ -4,9 +4,10 @@
 
 int main() {
 
-    Ratio<int> r1(15,0);
+    Ratio<int> r1(50,2);
 
     std::cout << r1 << std::endl;
-    
+    std::cout << sqrt(r1) << std::endl;
+
     return 0;
 }
