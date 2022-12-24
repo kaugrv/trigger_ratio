@@ -79,14 +79,25 @@ class Ratio {
 
         /// \brief Multiplies 2 rationals
         Ratio<T> operator*(const Ratio<T> &val) const;
-
-        /// \brief Multiplies a rational with a float
+    
+        /// \brief Multiplies a rational with a scalar
         template<typename U>
         Ratio<T> operator*(const U &val) const{
             Ratio<T> res = *this*Ratio<T>(val);
             return res;
         }
 
+        /// \brief divide 2 rationals
+        Ratio<T> operator/(const Ratio<T> &val) const;
+    
+        /// \brief Multiplies a rational with a scalar
+        template<typename U>
+        Ratio<T> operator/(const U &val) const{
+            Ratio<T> res = *this/Ratio<T>(val);
+            return res;
+        }
+
+        
         /// \brief Checks if 2 rationnals are equal
         /// \return 1 (True) or 0 (False)
         bool operator==(const Ratio<T> &val) const;
@@ -128,6 +139,15 @@ template <typename T>
 Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
 {
 	Ratio<T> result = Ratio(T(this->num()*val.num()), T(this->den()*val.den()));
+    return result;
+}
+
+
+// / - with two rationals
+
+template<typename T>
+Ratio<T> Ratio<T>::operator/(const Ratio<T> &val) const{
+	Ratio<T> result = Ratio(T(this->num()*val.den()), T(this->den()*val.num()));
     return result;
 }
 
