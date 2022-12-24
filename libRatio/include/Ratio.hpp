@@ -7,7 +7,6 @@
 // Doxygen menu
 /// \version 0.1
 /// \mainpage
-/// \image html myImage.jpg
 /// \tableofcontents
 /// \section instroduction_sec What for?
 /// Trigger Ratio Library.
@@ -31,7 +30,7 @@
 // Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20);
 
 /// \class Ratio
-/// \brief class defining rationals (way of )
+/// \brief Rationals numbers (defined by an integer numerator and an integer denominator)
 template <typename T>
 class Ratio {
     
