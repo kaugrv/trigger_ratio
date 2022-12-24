@@ -26,6 +26,20 @@
 /// 	- or [path to build]/INTERFACE/doc/doc-doxygen/html/index.html
 
 
+
+/// \brief Highest common divisor (using Euclidean algorithm)
+/// \param a integer
+/// \param b integer
+/// \return Hcd of a and b
+int hcd(int a, int b) {
+    if (b==0) {
+        return abs(a);
+    }
+    else {
+        return abs(hcd(b, a%b));
+    }
+}
+
 /// \class Ratio
 /// \brief Rational numbers are defined by an integer (numerator) over another integer (denominator).
 template <typename T>
@@ -52,7 +66,18 @@ class Ratio {
         /// \param den int, uint, long int...
         /// \return num/den
         template<typename U, typename V>
-        Ratio(const U num, const V den): m_num(num), m_den(den){if (num==0) m_den=1;}
+        Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
+            // 0 = 0/1
+            if (num==0) {
+                m_den=1;
+            }
+
+            // denominator is positive
+            if (den<0) {
+                m_den = -m_den;
+                m_num = -m_num;
+            }
+        }
         
         /// \brief Copy constructor
         /// \param val Ratio
@@ -95,7 +120,12 @@ class Ratio {
 // <<
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
-    os << val.num() << "/" << val.den();
+    if (val.den()==0) {
+        os << "inf";
+    }
+    else {
+        os << val.num() << "/" << val.den();
+    }
     return os;
 }
 
@@ -145,8 +175,6 @@ bool Ratio<T>::operator==(const Ratio<T> &val) const
 /// \returns Ratio
 template <typename T = int>
 Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
-    std::cout << val << std::endl;
-
     if (val == 0.) return Ratio<T>();
 
     if (nbIter == 0) return Ratio<T>();
