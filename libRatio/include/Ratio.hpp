@@ -59,7 +59,8 @@ class Ratio {
         /// \param val int, uint, long int...
         /// \return val/1
         template<typename U>
-        Ratio(const U val): m_num(val), m_den(1) {}
+        Ratio(const U val): m_num(val), m_den(1) {
+        }
 
         /// \brief Parameterized constructor (from two integers)
         /// \param num int, uint, long int...
@@ -112,7 +113,9 @@ class Ratio {
         Ratio operator+(const Ratio &val) const;
 
 
-        Ratio operator*=(const Ratio &val) const;
+        void operator*=(const Ratio &val);
+        
+        void operator*=(const T &val);
 
         /// \brief negates a rational
         Ratio operator-() const;
@@ -305,6 +308,17 @@ Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
     return result;
 }
 
+template <typename T>
+void Ratio<T>::operator*=(const Ratio &val){
+    this->setDen(m_den*val.den());
+    this->setNum(m_num*val.num());
+}
+
+template <typename T>
+void Ratio<T>::operator*=(const T &scal){
+    *this*=Ratio<T>(scal);
+}
+
 // / - with two rationals
 template<typename T>
 Ratio<T> Ratio<T>::operator/(const Ratio<T> &val) const{
@@ -363,6 +377,8 @@ Ratio<T> sqrt(const Ratio<T> &val) {
 	Ratio<T> result = convertFloatToRatio<T>(sqrt(convertRatioToFloat(val)));
     return result;
 }
+
+
 
 
 #endif

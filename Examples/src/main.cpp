@@ -15,6 +15,9 @@ int main() {
     std::cout << r1 << std::endl;
     r1.setDen(-4);
     std::cout << r1 << std::endl;
+    r1*=convertFloatToRatio<int>(2.5);
+    std::cout << r1 << std::endl;
+
 
     return 0;
 }
