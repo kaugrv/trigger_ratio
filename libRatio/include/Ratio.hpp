@@ -26,11 +26,8 @@
 /// 	- or [path to build]/INTERFACE/doc/doc-doxygen/html/index.html
 
 
-// template<typename T>
-// Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20);
-
 /// \class Ratio
-/// \brief Rationals numbers (defined by an integer numerator and an integer denominator)
+/// \brief Rational numbers are defined by an integer (numerator) over another integer (denominator).
 template <typename T>
 class Ratio {
     
@@ -38,43 +35,52 @@ class Ratio {
         T m_num;
         T m_den;
 
-    public :
+    public:
+        /// \brief Default constructor
+        /// \param None
+        /// \return 0/1
+        Ratio(): m_num(),m_den(T(1)){}
 
-        // constructors
-        Ratio():m_num(),m_den(T(1)){}
-
+        /// \brief Parameterized constructor (from one integer)
+        /// \param val int, uint, long int...
+        /// \return val/1
         template<typename U>
-        Ratio(const U val)
-        :m_num(val), m_den(1)
-        {
+        Ratio(const U val): m_num(val), m_den(1) {}
+
+        /// \brief Parameterized constructor (from two integers)
+        /// \param num int, uint, long int...
+        /// \param den int, uint, long int...
+        /// \return num/den
+        template<typename U, typename V>
+        Ratio(const U num, const V den): m_num(num), m_den(den){if (num==0) m_den=1;}
+        
+        /// \brief Copy constructor
+        /// \param val Ratio
+        /// \return Copy of val
+        Ratio(const Ratio &val): m_num(val.m_num), m_den(val.m_den){
         }
 
-        template<typename U, typename V>
-        Ratio(const U num, const V den)
-            :m_num(num), m_den(den){ if (num==0) m_den=1;}
-        
-        Ratio(const Ratio &val);
+        /// \brief Default destructor
+        ~Ratio(){}
 
-        /// \brief destructor
-        ~Ratio();
-
-        // getters
+        /// \brief Numerator getter
         const T& num() const;
+
+        /// \brief Denominator getter
         const T& den() const;
 
-        // operator
-        Ratio operator+(const Ratio &val) const;
-
-        // inversion 
+        /// \brief Returns den/num
         Ratio invert();
 
+        // Operators
+
+        /// \brief Adds 2 rationals
+        Ratio operator+(const Ratio &val) const;
+
         /// \brief Multiplies 2 rationals
-        /// \return The product of 2
         Ratio<T> operator*(const Ratio<T> &val) const;
 
-
         /// \brief Multiplies a rational with a float
-        /// \return The product of 2
         template<typename U>
         Ratio<T> operator*(const U &val) const{
             Ratio<T> res = *this*Ratio<T>(val);
@@ -86,27 +92,14 @@ class Ratio {
         bool operator==(const Ratio<T> &val) const;
 };
 
-
-
-
-// constructor
-
-
-// copy constructor
+// <<
 template <typename T>
-Ratio<T>::Ratio(const Ratio<T> &val)
-: m_num(val.m_num), m_den(val.m_den)
-{
-
+std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
+    os << val.num() << "/" << val.den();
+    return os;
 }
 
-// destructor
-template <typename T>
-Ratio<T>::~Ratio() {
-
-}
-
-// GETTER
+// numerator getter
 template <typename T>
 const T& Ratio<T>::num() const{
     return m_num;
@@ -118,32 +111,25 @@ const T& Ratio<T>::den() const{
     return m_den;
 }
 
-// operators
+// inversion
+template <typename T>
+Ratio<T> Ratio<T>::invert(){
+    return Ratio(m_den, m_num);
+}
+
+// +
 template <typename T>
 Ratio<T>  Ratio<T>::operator+(const Ratio<T> &val)const{
     return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
 }
 
-// <<
-template <typename T>
-std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
-    os << val.num() << "/" << val.den();
-    return os;
-}
-
-// *
-// with two rationnals
+// * - with two rationals
 template <typename T>
 Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
 {
 	Ratio<T> result = Ratio(T(this->num()*val.num()), T(this->den()*val.den()));
     return result;
 }
-
-
-
-
-
 
 // ==
 template <typename T>
@@ -152,17 +138,7 @@ bool Ratio<T>::operator==(const Ratio<T> &val) const
     return (T(this->num()==val.num()) && T(this->den()==val.den()));
 }
 
-// inversion
-template <typename T>
-Ratio<T> Ratio<T>::invert(){
-    return Ratio(m_den, m_num);
-}
-
-
-
-
-//converter :
-//first version, only works with positive numbers
+// converter : first version, only works with positive numbers
 template <typename T = int>
 Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
     std::cout << val << std::endl;
@@ -177,20 +153,14 @@ Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
 
     int q = std::floor(val);
     return Ratio<T>(Ratio<T>(q,1)+convertPosFloatToRatio(val-q,nbIter-1));
-
 }
 
-
-// adaptation pour les négatifs
+// converter : negative version
 template<typename T = int>
 Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
     int sign = -(std::signbit(val)*2-1);
-    std::cout << "signe : " << sign<< std::endl;
-    std::cout << "val : " << val << "abs(val) : " << sign*val<<  std::endl;
     return convertPosFloatToRatio(sign*val,nbIter)*sign;
 }
-
-
 
 
 #endif

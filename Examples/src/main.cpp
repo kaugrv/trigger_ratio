@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Ratio.hpp"
 
-#include "plop.hpp"
-
 
 int main() {
 

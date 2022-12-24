@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.13)
 project(Examples)
 
 # file to compile and name of the executable
-add_executable(Examples src/main.cpp src/plop.cpp include/plop.hpp)
+add_executable(Examples src/main.cpp)
 
 #add dependencies
 target_link_libraries(Examples PRIVATE libRatio)
