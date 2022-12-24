@@ -111,6 +111,7 @@ class Ratio {
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
 
+
         Ratio operator*=(const Ratio &val) const;
 
         /// \brief negates a rational
@@ -281,6 +282,20 @@ template <typename T>
 Ratio<T> Ratio<T>::operator+(const Ratio<T> &val)const{
     return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
 }
+
+
+// - unaire
+template <typename T>
+Ratio<T> Ratio<T>::operator-() const{
+    return Ratio<T>(-m_num,m_den);
+}
+
+// - with two rationals
+template <typename T>
+Ratio<T> Ratio<T>::operator-(const Ratio<T> &val) const{
+    return *this + -val;
+}
+
 
 // * - with two rationals
 template <typename T>

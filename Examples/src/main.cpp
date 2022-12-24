@@ -11,7 +11,6 @@ int main() {
 
     r1.setNum(0);
     std::cout << r1 << std::endl;
-    std::cout << sqrt(r1) << std::endl;
     r1.setNum(20);
     std::cout << r1 << std::endl;
     r1.setDen(-4);
