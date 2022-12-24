@@ -138,7 +138,11 @@ bool Ratio<T>::operator==(const Ratio<T> &val) const
     return (T(this->num()==val.num()) && T(this->den()==val.den()));
 }
 
-// converter : first version, only works with positive numbers
+
+/// \brief Converter : first version, only works with positive numbers
+/// \param val float, double... (value to be converted)
+/// \param nbIter
+/// \returns Ratio
 template <typename T = int>
 Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
     std::cout << val << std::endl;
@@ -155,7 +159,10 @@ Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
     return Ratio<T>(Ratio<T>(q,1)+convertPosFloatToRatio(val-q,nbIter-1));
 }
 
-// converter : negative version
+/// \brief Converter (works with negative)
+/// \param val float, double... (value to be converted)
+/// \param nbIter
+/// \returns Ratio
 template<typename T = int>
 Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
     int sign = -(std::signbit(val)*2-1);
