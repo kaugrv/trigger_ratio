@@ -23,7 +23,7 @@ Ratio<T> min(const Ratio<T> &val1, const Ratio<T> &val2 ) {
 /// \brief Square Root
 template<typename T>
 Ratio<T> sqrt(const Ratio<T> &val) {
-	Ratio<T> result = convertFloatToRatio<T>(sqrt(convertRatioToFloat(val)));
+	Ratio<T> result = convertFloatToRatio<T>(sqrtf(convertRatioToFloat(val)));
     return result;
 }
 
@@ -36,14 +36,14 @@ Ratio<T> abs(const Ratio<T> &val) {
 /// \brief Cosinus
 template<typename T>
 Ratio<T> cos(const Ratio<T> &val) {
-	Ratio<T> result = convertFloatToRatio<T>(cosf(convertRatioToFloat(val)));
+	Ratio<T> result = convertFloatToRatio<T>(cosf128(convertRatioToFloat(val)));
     return result;
 }
 
 /// \brief Arcosinus
 template<typename T>
 Ratio<T> acos(const Ratio<T> &val) {
-	Ratio<T> result = convertFloatToRatio<T>(acosf(convertRatioToFloat(val)));
+	Ratio<T> result = convertFloatToRatio<T>(acosf128(convertRatioToFloat(val)));
     return result;
 }
 
@@ -76,9 +76,9 @@ U ceil(const Ratio<T> &val) {
 template<typename T, typename U>
 Ratio<T> pow(const Ratio<T> &val, U n) {
 	if (std::is_floating_point<U>::value == true){
-        Ratio<T> result = convertFloatToRatio<T>(pow(convertRatioToFloat(val),n));
+        Ratio<T> result = convertFloatToRatio<T>(powf128(convertRatioToFloat(val),n));
         return result;
-    } 
+    }
     
     Ratio<T> result = Ratio<T>(pow(val.num(),n),pow(val.den(),n));
     return result;
@@ -88,6 +88,7 @@ Ratio<T> pow(const Ratio<T> &val, U n) {
 /// \brief exponential
 template<typename T>
 Ratio<T> exp(const Ratio<T> &val) {
-	Ratio<T> result = convertFloatToRatio<T>(exp(convertRatioToFloat(val)));
+	Ratio<T> result = convertFloatToRatio<T>(expf128(convertRatioToFloat(val)));
     return result;
 }
+

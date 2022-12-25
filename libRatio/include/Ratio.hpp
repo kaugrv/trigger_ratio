@@ -68,16 +68,21 @@ class Ratio {
         /// \return num/den
         template<typename U, typename V>
         Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
-            // 0 = 0/1
-            if (num==0) {
-                m_den=1;
-            }
-
+            
             // denominator is positive
             if (den<0) {
                 m_den = -m_den;
                 m_num = -m_num;
             }
+            
+            // 0 = 0/1
+            if (num==0) {
+                m_den=1;
+            }
+            if (den==0) {
+                m_num=1;
+            }
+
         }
         
         /// \brief Copy constructor
@@ -266,8 +271,9 @@ Ratio<T> Ratio<T>::invert(){
 /// \param nbIter
 /// \returns Ratio
 template <typename T>
-Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
-    if (val == 0.) return Ratio<T>();
+Ratio<T> convertPosFloatToRatio(long double val, uint nbIter){
+    //std::cout << val << std::endl;
+    if (val <= 1e-15) return Ratio<T>();
 
     if (nbIter == 0) return Ratio<T>();
 
@@ -284,7 +290,7 @@ Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
 /// \param nbIter
 /// \returns Ratio
 template<typename T>
-Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
+Ratio<T> convertFloatToRatio(long double val, uint nbIter = 5000){
     int sign = -(std::signbit(val)*2-1);
     return convertPosFloatToRatio<T>(sign*val,nbIter)*sign;
 }
