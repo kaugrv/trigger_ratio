@@ -265,28 +265,28 @@ Ratio<T> Ratio<T>::invert(){
 /// \param val float, double... (value to be converted)
 /// \param nbIter
 /// \returns Ratio
-template <typename T = int>
+template <typename T>
 Ratio<T> convertPosFloatToRatio(double val, uint nbIter = 20){
     if (val == 0.) return Ratio<T>();
 
     if (nbIter == 0) return Ratio<T>();
 
     if (val < 1){
-        return convertPosFloatToRatio(1.0/val,nbIter).invert();
+        return convertPosFloatToRatio<T>(1.0/val,nbIter).invert();
     }
 
     int q = std::floor(val);
-    return Ratio<T>(Ratio<T>(q,1)+convertPosFloatToRatio(val-q,nbIter-1));
+    return Ratio<T>(Ratio<T>(q,1)+convertPosFloatToRatio<T>(val-q,nbIter-1));
 }
 
 /// \brief Converter (works with negative)
 /// \param val float, double... (value to be converted)
 /// \param nbIter
 /// \returns Ratio
-template<typename T = int>
+template<typename T>
 Ratio<T> convertFloatToRatio(double val, uint nbIter = 20){
     int sign = -(std::signbit(val)*2-1);
-    return convertPosFloatToRatio(sign*val,nbIter)*sign;
+    return convertPosFloatToRatio<T>(sign*val,nbIter)*sign;
 }
 
 /// \brief Converts Ratio back to float/double

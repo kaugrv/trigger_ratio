@@ -72,8 +72,6 @@ U ceil(const Ratio<T> &val) {
     return 1+val.num()/val.den();
 }
 
-
-
 /// \brief pow (isnt really precise with floating powers)
 template<typename T, typename U>
 Ratio<T> pow(const Ratio<T> &val, U n) {
@@ -90,6 +88,6 @@ Ratio<T> pow(const Ratio<T> &val, U n) {
 /// \brief exponential
 template<typename T>
 Ratio<T> exp(const Ratio<T> &val) {
-	Ratio<T> result = convertFloatToRatio<T>(expf(convertRatioToFloat(val)));
+	Ratio<T> result = convertFloatToRatio<T>(exp(convertRatioToFloat(val)));
     return result;
 }
