@@ -3,20 +3,13 @@
 
 
 int main() {
+    Ratio<int> r;
+    Ratio<int> r1(5,1);
+    Ratio<int> r2(10,1);
+    Ratio<int> r3(15,1);
+    Ratio<int> r4(20,1);
 
-    Ratio<int> r1(15,3);
-    Ratio<int> r2(15,3);
-
-    std::cout << r1-r1 << std::endl;
-
-    r1.setNum(0);
-    std::cout << r1 << std::endl;
-    r1.setNum(20);
-    std::cout << r1 << std::endl;
-    r1.setDen(-4);
-    std::cout << r1 << std::endl;
-    r1*=convertFloatToRatio<int>(2.5);
-    std::cout << r1 << std::endl;
+    std::cout<< moy<int, double>(r,r1,r2,r3,r4) << std::endl;
 
 
     return 0;

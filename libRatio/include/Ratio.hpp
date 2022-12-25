@@ -344,7 +344,7 @@ bool Ratio<T>::operator!=(const Ratio<T> &val) const
 template <typename T>
 bool Ratio<T>::operator<(const Ratio<T> &val) const
 {
-    return (T(this->num()*val.den()) > T(val.num()*this->den()));
+    return (T(this->num()*val.den()) < T(val.num()*this->den()));
 }
 
 // >
@@ -369,16 +369,65 @@ bool Ratio<T>::operator<=(const Ratio<T> &val) const
 }
 
 
+/// \brief Maximum between two Ratios
+/// \param val1 Ratio
+/// \param val2 Ratio
+/// \returns The greatest of both
+template<typename T>
+Ratio<T> max(const Ratio<T> &val1, const Ratio<T> &val2 ) {
+    return (val1>=val2 ? val1 : val2);
+}
+
+/// \brief Minimum between two Ratios
+/// \param val1 Ratio
+/// \param val2 Ratio
+/// \returns The littlest of both
+template<typename T>
+Ratio<T> min(const Ratio<T> &val1, const Ratio<T> &val2 ) {
+    return (val1<=val2 ? val1 : val2);
+}
 
 
-// Sqrt
+/// \brief Square Root
 template<typename T>
 Ratio<T> sqrt(const Ratio<T> &val) {
 	Ratio<T> result = convertFloatToRatio<T>(sqrt(convertRatioToFloat(val)));
     return result;
 }
 
+/// \brief Absolute Value
+template<typename T>
+Ratio<T> abs(const Ratio<T> &val) {
+	return (val<Ratio<T>() ? -val : val);
+}
+
+/// \brief Cosinus
+template<typename T>
+Ratio<T> cos(const Ratio<T> &val) {
+	Ratio<T> result = convertFloatToRatio<T>(cosf(convertRatioToFloat(val)));
+    return result;
+}
+
+/// \brief Arcosinus
+template<typename T>
+Ratio<T> acos(const Ratio<T> &val) {
+	Ratio<T> result = convertFloatToRatio<T>(acosf(convertRatioToFloat(val)));
+    return result;
+}
 
 
+/// \brief Mean value of a set of Rationals
+template<typename T>
+Ratio<T> average(Ratio <T> val) {
+    return val;
+}
+
+/// \brief Mean value of a set of Rationals
+/// \param Ratio any number (function is variadic)
+template<typename T, typename U=double, typename... Args>
+Ratio<T> average(Ratio<T> first, Args... args) {
+    auto N = (sizeof...(args));
+    return (first + moy(args...)*N)/(N+1);
+}
 
 #endif
