@@ -112,16 +112,26 @@ class Ratio {
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
 
-
-        void operator*=(const Ratio &val);
+        /// @brief  adds to himself
+        /// @param val 
+        void operator+=(const Ratio &val);
         
-        void operator*=(const T &val);
+        void operator+=(const T &val);
+
+
 
         /// \brief negates a rational
         Ratio operator-() const;
 
         /// \brief substract 2 rationals
         Ratio operator-(const Ratio &val) const;
+
+        /// @brief  substract to himself
+        /// @param val 
+        void operator-=(const Ratio &val);
+        
+        void operator-=(const T &val);
+
 
         /// \brief Multiplies 2 rationals
         Ratio<T> operator*(const Ratio<T> &val) const;
@@ -132,6 +142,13 @@ class Ratio {
             Ratio<T> res = *this*Ratio<T>(val);
             return res;
         }
+        
+        /// @brief  multiplies with himself
+        /// @param val 
+        void operator*=(const Ratio &val);
+        
+        void operator*=(const T &val);
+
 
         /// \brief Division of 2 rationals
         Ratio<T> operator/(const Ratio<T> &val) const;
@@ -286,7 +303,16 @@ Ratio<T> Ratio<T>::operator+(const Ratio<T> &val)const{
     return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
 }
 
+template <typename T>
+void Ratio<T>::operator+=(const Ratio &val){
+    this->setDen((*this+val).den());
+    this->setNum((*this+val).num());
+}
 
+template <typename T>
+void Ratio<T>::operator+=(const T &scal){
+    *this+=Ratio<T>(scal);
+}
 // - unaire
 template <typename T>
 Ratio<T> Ratio<T>::operator-() const{
@@ -299,6 +325,16 @@ Ratio<T> Ratio<T>::operator-(const Ratio<T> &val) const{
     return *this + -val;
 }
 
+template <typename T>
+void Ratio<T>::operator-=(const Ratio &val){
+    this->setDen((*this-val).den());
+    this->setNum((*this-val).num());
+}
+
+template <typename T>
+void Ratio<T>::operator-=(const T &scal){
+    *this-=Ratio<T>(scal);
+}
 
 // * - with two rationals
 template <typename T>
@@ -427,7 +463,39 @@ Ratio<T> average(Ratio <T> val) {
 template<typename T, typename U=double, typename... Args>
 Ratio<T> average(Ratio<T> first, Args... args) {
     auto N = (sizeof...(args));
-    return (first + moy(args...)*N)/(N+1);
+    return (first + average(args...)*N)/(N+1);
+}
+
+template<typename T, typename U = int>
+U floor(const Ratio<T> &val) {
+    return val.num()/val.den();
+}
+
+template<typename T, typename U = int>
+U ceil(const Ratio<T> &val) {
+    return 1+val.num()/val.den();
+}
+
+
+
+/// \brief pow (isnt really precise with floating powers)
+template<typename T, typename U>
+Ratio<T> pow(const Ratio<T> &val, U n) {
+	if (std::is_floating_point<U>::value == true){
+        Ratio<T> result = convertFloatToRatio<T>(pow(convertRatioToFloat(val),n));
+        return result;
+    } 
+    
+    Ratio<T> result = Ratio<T>(pow(val.num(),n),pow(val.den(),n));
+    return result;
+}
+
+
+/// \brief exponential
+template<typename T>
+Ratio<T> exp(const Ratio<T> &val) {
+	Ratio<T> result = convertFloatToRatio<T>(expf(convertRatioToFloat(val)));
+    return result;
 }
 
 #endif
