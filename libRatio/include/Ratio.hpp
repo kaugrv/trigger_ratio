@@ -5,25 +5,10 @@
 #define __RATIO__HPP
 
 // Doxygen menu
-/// \version 0.1
 /// \mainpage
-/// \tableofcontents
-/// \section instroduction_sec What for?
-/// Trigger Ratio Library
-/// \section install_bigsec How to install
-/// \subsection dependencies_sec Dependencies
-/// \li nothing
-/// \li Doxygen (if you want the documentation)
-/// \subsection install_sec Install with cmake (Linux / Mac)
-/// \li go to main dir
-/// \li mkdir build
-/// \li cd build
-/// \li cmake ..
-/// \li make
-/// \li if Doxygen installed: make html
-/// \li The documentation is located in :
-/// 	- [path to build]/doc/doc-doxygen/html/index.html or 
-/// 	- or [path to build]/INTERFACE/doc/doc-doxygen/html/index.html
+/// \section A Rational Numbers Library
+/// \li Tristan Debeaune
+/// \li Wendy Gervais
 
 
 
@@ -74,13 +59,21 @@ class Ratio {
                 m_den = -m_den;
                 m_num = -m_num;
             }
+
+            if (num==0 && den==0) {
+                //THROW EXCEPTION 0/0
+            }
+
+            //IF
+            // THROW EXCEPTION NUM OR DEN IS FLOAT
             
             // 0 = 0/1
             if (num==0) {
                 m_den=1;
             }
+            // inf = 1/0 or -1/0
             if (den==0) {
-                m_num=1;
+                m_num=-(std::signbit(num)*2-1);
             }
 
         }
@@ -117,7 +110,7 @@ class Ratio {
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
 
-        /// @brief  adds to himself
+        /// @brief  Adds to itself
         /// @param val 
         void operator+=(const Ratio &val);
         
@@ -125,13 +118,13 @@ class Ratio {
 
 
 
-        /// \brief negates a rational
+        /// \brief Negates a rational
         Ratio operator-() const;
 
-        /// \brief substract 2 rationals
+        /// \brief Substract 2 rationals
         Ratio operator-(const Ratio &val) const;
 
-        /// @brief  substract to himself
+        /// @brief  Substract to itself
         /// @param val 
         void operator-=(const Ratio &val);
         
@@ -141,14 +134,14 @@ class Ratio {
         /// \brief Multiplies 2 rationals
         Ratio<T> operator*(const Ratio<T> &val) const;
     
-        /// \brief Multiplies a rational with a scalar
+        /// \brief Multiplies a rational with an int
         template<typename U>
         Ratio<T> operator*(const U &val) const{
             Ratio<T> res = *this*Ratio<T>(val);
             return res;
         }
         
-        /// @brief  multiplies with himself
+        /// @brief  Multiplies with itself
         /// @param val 
         void operator*=(const Ratio &val);
         
@@ -158,7 +151,7 @@ class Ratio {
         /// \brief Division of 2 rationals
         Ratio<T> operator/(const Ratio<T> &val) const;
     
-        /// \brief Divides a rational by a scalar
+        /// \brief Divides a rational by an int
         template<typename U>
         Ratio<T> operator/(const U &val) const{
             Ratio<T> res = *this/Ratio<T>(val);
@@ -195,7 +188,12 @@ class Ratio {
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const Ratio<T> &val){
     if (val.den()==0) {
-        os << "inf";
+        if (val.num()==1){
+            os << "+inf";
+        }
+        if (val.num()==-1){
+            os << "-inf";
+        }
     }
     else {
         os << val.num() << "/" << val.den();

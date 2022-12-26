@@ -7,8 +7,7 @@
 /// \returns Ratio
 template <typename T>
 Ratio<T> convertPosFloatToRatio(long double val, uint nbIter){
-    //std::cout << val << std::endl;
-    if (val <= 1e-15) return Ratio<T>();
+    if (val <= 1e-10) return Ratio<T>();
 
     if (nbIter == 0) return Ratio<T>();
 
