@@ -4,25 +4,32 @@
 
 
 int main() {
-    long long int a = 3;
-    long long int b = 2;
-    
-    Ratio<long long int> r1(a,b);
+    Ratio<int> r1; //default constructor
+    Ratio<int> r2(5); //parametrized constructor (1)
+    Ratio<int> r3(50,2); //parametrized constructor (2)
 
-    std::cout<< r1 << std::endl;
-    //25
-    std::cout << exp(r1)<< std::endl;
+    long int a = 3;
+    long int b = 2;
+    Ratio<long int> r4(a,b); //Ratio can be int, long int, long long int
 
-    std::cout << sqrt(r1) << std::endl;
-    //r1*=convertFloatToRatio<long long int>(0.5);
-    
-    //5
-    std::cout << cos(r1) << std::endl;
-    std::cout << acos(r1) << std::endl;
-    std::cout << pow(r1,2.5) << std::endl;
+    Ratio<long int>r5=r4; //copy constructor
 
- //std::cout << "teste wendy : " << convertFloatToRatio<long long int>(72004899337.4) << std::endl;
+    std::cout << "r1 = " << r1 << std::endl;
+    std::cout << "r2 = " << r2 << std::endl;
+    std::cout << "r3 = " << r3 << std::endl;
+    std::cout << "r4 = " << r4 << std::endl;
+    std::cout << "r5 = " << r5 << std::endl <<  std::endl;
 
-    //Ratio<long int>
+
+    std::cout << "Math Operators on Ratio : " << std::endl;
+
+    std::cout << "Square Root of 3/2 = " << sqrt(r5)<< std::endl;
+    std::cout << "Exponential of 3/2 = " << exp(r5) << std::endl;
+    std::cout << "Log of 3/2 = " << log(r5)<< std::endl;
+    std::cout << "Cosine of 3/2 = " << cos(r5)<< std::endl;
+    std::cout << "Sine of 3/2 = " << sin(r5)<< std::endl;
+    std::cout << "3/2 pow. 2 = " << pow(r5,2)<< std::endl;
+
+
     return 0;
 }

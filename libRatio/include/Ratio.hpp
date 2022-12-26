@@ -9,9 +9,9 @@
 /// \mainpage
 /// \tableofcontents
 /// \section instroduction_sec What for?
-/// Trigger Ratio Library.
+/// Trigger Ratio Library
 /// \section install_bigsec How to install
-/// \subsection dependencies_sec Dependecies
+/// \subsection dependencies_sec Dependencies
 /// \li nothing
 /// \li Doxygen (if you want the documentation)
 /// \subsection install_sec Install with cmake (Linux / Mac)
@@ -266,42 +266,7 @@ Ratio<T> Ratio<T>::invert(){
     return Ratio(m_den, m_num);
 }
 
-/// \brief Converter : first version, only works with positive numbers
-/// \param val float, double... (value to be converted)
-/// \param nbIter
-/// \returns Ratio
-template <typename T>
-Ratio<T> convertPosFloatToRatio(long double val, uint nbIter){
-    //std::cout << val << std::endl;
-    if (val <= 1e-15) return Ratio<T>();
 
-    if (nbIter == 0) return Ratio<T>();
-
-    if (val < 1){
-        return convertPosFloatToRatio<T>(1.0/val,nbIter).invert();
-    }
-
-    int q = std::floor(val);
-    return Ratio<T>(Ratio<T>(q,1)+convertPosFloatToRatio<T>(val-q,nbIter-1));
-}
-
-/// \brief Converter (works with negative)
-/// \param val float, double... (value to be converted)
-/// \param nbIter
-/// \returns Ratio
-template<typename T>
-Ratio<T> convertFloatToRatio(long double val, uint nbIter = 5000){
-    int sign = -(std::signbit(val)*2-1);
-    return convertPosFloatToRatio<T>(sign*val,nbIter)*sign;
-}
-
-/// \brief Converts Ratio back to float/double
-/// \param val Ratio
-/// \returns double (by default)
-template<typename T, typename U=double>
-double convertRatioToFloat(Ratio<T> val){
-    return U(val.num())/U(val.den());
-}
 
 // +
 template <typename T>
@@ -309,6 +274,7 @@ Ratio<T> Ratio<T>::operator+(const Ratio<T> &val)const{
     return Ratio<T>(m_num*val.m_den + m_den*val.m_num,m_den*val.m_den);
 }
 
+// +=
 template <typename T>
 void Ratio<T>::operator+=(const Ratio &val){
     this->setDen((*this+val).den());
@@ -319,7 +285,7 @@ template <typename T>
 void Ratio<T>::operator+=(const T &scal){
     *this+=Ratio<T>(scal);
 }
-// - unaire
+// - unary
 template <typename T>
 Ratio<T> Ratio<T>::operator-() const{
     return Ratio<T>(-m_num,m_den);
@@ -331,6 +297,7 @@ Ratio<T> Ratio<T>::operator-(const Ratio<T> &val) const{
     return *this + -val;
 }
 
+// -=
 template <typename T>
 void Ratio<T>::operator-=(const Ratio &val){
     this->setDen((*this-val).den());
@@ -350,6 +317,7 @@ Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
     return result;
 }
 
+//*=
 template <typename T>
 void Ratio<T>::operator*=(const Ratio &val){
     this->setDen(m_den*val.den());
