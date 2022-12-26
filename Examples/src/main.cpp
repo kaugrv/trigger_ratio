@@ -41,7 +41,5 @@ int main() {
     Ratio<int> ri(0,1);
     std::cout<<"ri = "<< ri.invert() << std::endl;
 
-
-
     return 0;
 }

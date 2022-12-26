@@ -54,27 +54,24 @@ class Ratio {
         template<typename U, typename V>
         Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
             
+
+
+            // inf = 1/0 or -1/0
+            if (den==0) {
+                m_num=-(std::signbit(num)*2-1);
+            }
+
+            // 0 = 0/1
+            if (num==0) {
+                m_den=-(std::signbit(num)*2-1);
+            }
+
             // denominator is positive
             if (den<0) {
                 m_den = -m_den;
                 m_num = -m_num;
             }
 
-            if (num==0 && den==0) {
-                //THROW EXCEPTION 0/0
-            }
-
-            //IF
-            // THROW EXCEPTION NUM OR DEN IS FLOAT
-            
-            // 0 = 0/1
-            if (num==0) {
-                m_den=1;
-            }
-            // inf = 1/0 or -1/0
-            if (den==0) {
-                m_num=-(std::signbit(num)*2-1);
-            }
 
         }
         
