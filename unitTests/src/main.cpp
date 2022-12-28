@@ -95,6 +95,87 @@ TEST (RatioMaths, sqrt) {
 	}
 }
 
+TEST (RatioMaths, exp) {
+
+	const size_t maxSize = 50;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(-maxSize,maxSize);
+	std::uniform_int_distribution<int> uniformDistributionValue(-maxSize,maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<10000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    Ratio<int> r1(num1, den1);
+
+    float f = expf(num1*1.0/den1);
+    //std::cout << exp(r1) << "//" << f  << " // " << isinf(exp(r1)) << std::endl;
+    if(den1 == 0){
+      ASSERT_EQ(exp(r1),f);
+      break;
+    }
+    ASSERT_NEAR(exp(r1), f, 1e-5);
+
+	}
+}
+
+
+TEST (RatioMaths, cos) {
+
+	const size_t maxSize = 50;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(-maxSize,maxSize);
+	std::uniform_int_distribution<int> uniformDistributionValue(-maxSize,maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<10000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    Ratio<int> r1(num1, den1);
+
+    // try {
+    //   float a = num1*1.0/den1;
+    //   float f = cosf(num1*1.0/den1);
+    //   ASSERT_NEAR(cos(r1), f, 1e-5);
+
+    // }catch(const std::string &s) {
+    //     std::cerr << "error : " << s << std::endl;
+    // }
+    if (den1==0) break;
+    float f = cosf(num1*1.0/den1);
+    ASSERT_NEAR(cos(r1), f, 1e-5);
+	}
+}
+
+TEST (RatioMaths, sin) {
+
+	const size_t maxSize = 50;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(-maxSize,maxSize);
+	std::uniform_int_distribution<int> uniformDistributionValue(-maxSize,maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<10000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    Ratio<int> r1(num1, den1);
+
+    if (den1 == 0) break;
+    float f = sinf(num1*1.0/den1);
+    ASSERT_NEAR(sin(r1), f, 1e-5);
+
+
+	}
+}
 
 
 

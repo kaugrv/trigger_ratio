@@ -39,7 +39,13 @@ int main() {
     std::cout << "Infinite : " << std::endl;
 
     Ratio<int> ri(0,1);
+    Ratio<long int> rNeg(-1,0);
     std::cout<<"ri = "<< ri.invert() << std::endl;
+
+    std::cout << "///////////////" << std::endl << std::endl;
+
+    std::cout << r2/ri.invert() << std::endl;
+    std::cout << rNeg * r4<< std::endl;
 
     return 0;
 }

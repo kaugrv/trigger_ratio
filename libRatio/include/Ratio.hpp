@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <cmath>
 
 #ifndef __RATIO__HPP
 #define __RATIO__HPP

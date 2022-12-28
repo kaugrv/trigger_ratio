@@ -92,6 +92,7 @@ U sqrt(const Ratio<T> &val) {
 /// \returns float/double
 template<typename T, typename U=double>
 U exp(const Ratio<T> &val) {
+    //if(val.den() == 0) return INFINITY;
 	U result = U (expf(convertRatioToFloat(val)));
     return result;
 }
@@ -110,6 +111,10 @@ U log(const Ratio<T> &val) {
 /// \returns float/double
 template<typename T, typename U=double>
 U cos(const Ratio<T> &val) {
+    // infinite is not valid
+    if (val.den() == 0){
+        throw std::invalid_argument("no limit in infinit, can't have a value");
+    }
 	U result = U (cosf(convertRatioToFloat(val)));
     return result;
 }
@@ -119,6 +124,9 @@ U cos(const Ratio<T> &val) {
 /// \returns float/double
 template<typename T, typename U=double>
 U acos(const Ratio<T> &val) {
+    if (convertRatioToFloat(val) > 1 && convertRatioToFloat(val) < 1){
+        throw std::invalid_argument("argument not include beetween [-1;1]");
+    }
 	U result = U (acosf(convertRatioToFloat(val)));
     return result;
 }
@@ -127,7 +135,11 @@ U acos(const Ratio<T> &val) {
 /// \param Ratio
 /// \returns float/double
 template<typename T, typename U=double>
-U sin(const Ratio<T> &val) {
+U sin(const Ratio<T> &val) {  
+    // infinite is not valid
+    if (val.den() == 0){
+        throw std::invalid_argument("no limit in infinit, can't have a value");
+    }
 	U result = U (sinf(convertRatioToFloat(val)));
     return result;
 }
