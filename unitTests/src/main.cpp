@@ -22,14 +22,13 @@ TEST (RatioConstructors, defaultConstructor) {
 
 TEST (RatioOperators, adds) {
 
-	const size_t maxSize = 10;  
+	const size_t maxSize = 100;  
 	std::mt19937 generator(0);
-	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-	std::uniform_int_distribution<int> uniformDistributionValue(1,maxSize);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
 
-	for(int run=0; run<10000; ++run) {
+	for(int run=0; run<1000; ++run) {
 
     int num1 = gen();
     int den1 = gen();
@@ -38,23 +37,27 @@ TEST (RatioOperators, adds) {
     int den2 = gen();
 
     Ratio<int> r1(num1, den1), r2(num2,den2);
-    Ratio<int> r3(num1*den2 + num2*den1, den1*den2);
+    Ratio<int> r3(num1*den2+num2*den1, den1*den2);
 
-    ASSERT_EQ(r1+r2, r3);
+    if ((r1+r2).den()==0 && r3.den()==0) {
+      return;
+    }
+
+    EXPECT_EQ(r1+r2,r3);
+
 
 	}
 }
 
 TEST (RatioOperators, times) {
 
-	const size_t maxSize = 1000;  // max size of the tested vectors
+	const size_t maxSize = 100;  
 	std::mt19937 generator(0);
-	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-	std::uniform_int_distribution<int> uniformDistributionValue(1,maxSize);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
 
-	for(int run=0; run<10000; ++run) {
+	for(int run=0; run<1000; ++run) {
 
     int num1 = gen();
     int den1 = gen();
@@ -65,7 +68,11 @@ TEST (RatioOperators, times) {
     Ratio<int> r1(num1, den1), r2(num2,den2);
     Ratio<int> r3(num1*num2, den1*den2);
 
-    ASSERT_EQ(r1*r2, r3);
+    if ((r1+r2).den()==0 && r3.den()==0) {
+      return;
+    }
+
+    EXPECT_EQ(r1*r2,r3);
 
 	}
 

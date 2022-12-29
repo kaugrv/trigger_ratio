@@ -36,16 +36,28 @@ int main() {
     std::cout << "3/2 pow. 2 = " << pow(r5,2)<< std::endl << std::endl;
 
 
-    std::cout << "Infinite : " << std::endl;
+    std::cout << "Infinite and 0 : " << std::endl;
 
-    Ratio<int> ri(0,1);
-    Ratio<long int> rNeg(-1,0);
-    std::cout<<"ri = "<< ri.invert() << std::endl;
+    Ratio<int> ro1(0,5);
+    Ratio<int> ro2(0,-5);
+    Ratio<int> ri1(5,0);
+    Ratio<int> ri2(-5,0);
+    std::cout << "r3 + 0+ = " << r3 + ro1 << std::endl;
+    std::cout << "r3 + 0- = " << r3 + ro2 << std::endl;
+    std::cout << "r3 * 0+ = " << r3 * ro1 << std::endl;
+    std::cout << "r3 * 0- = " << r3 * ro2 << std::endl;
 
-    std::cout << "///////////////" << std::endl << std::endl;
 
-    std::cout << r2/ri.invert() << std::endl;
-    std::cout << rNeg * r4<< std::endl;
+
+    std::cout << "r3 + inf = " << r3 + ri1 << std::endl;
+    std::cout << "r3 - inf = " << r3 + ri2 << std::endl;
+    std::cout << "r3*inf = " << r3*ri1 << std::endl;
+    std::cout << "r3*(-inf) = " << r3*ri2 << std::endl;
+
+    std::cout << "inf*(-inf) = " << ri1*ri2 << std::endl;
+
+
+
 
     return 0;
 }
