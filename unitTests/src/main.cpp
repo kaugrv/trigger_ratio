@@ -10,15 +10,37 @@
 
 // RatioConstructors
 
-TEST (RatioConstructors, defaultConstructor) { 
+TEST (RatioConstructors, default) { 
   Ratio<int> r;
 	ASSERT_EQ (r.num(), 0);
 }
 
+TEST (RatioConstructors, p1) { 
+  int a=5;
+  Ratio<int> r(a);
+	ASSERT_EQ (r.num(), a);
+}
+
+TEST (RatioConstructors, p2) { 
+  int a=5;
+  int b=2;
+  Ratio<int> r(a,b);
+	ASSERT_EQ (r.num(), a);
+  ASSERT_EQ (r.den(), b);
+}
+
+TEST (RatioConstructors, copy) { 
+  int a=5;
+  int b=2;
+  Ratio<int> r1(a,b);
+  Ratio<int> r2(r1);
+	ASSERT_EQ (r1, r2);
+}
+
+
 
 
 // RatioOperators
-
 
 TEST (RatioOperators, adds) {
 
@@ -49,6 +71,55 @@ TEST (RatioOperators, adds) {
 	}
 }
 
+TEST (RatioOperators, subs) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    int num2 = gen();
+    int den2 = gen();
+
+    Ratio<int> r1(num1, den1), r2(num2,den2);
+    Ratio<int> r3(num1*den2-num2*den1, den1*den2);
+
+    if ((r1-r2).den()==0 && r3.den()==0) {
+      return;
+    }
+
+    EXPECT_EQ(r1-r2,r3);
+
+	}
+}
+
+TEST (RatioOperators, minus) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num = gen();
+    int den = gen();
+
+    Ratio<int> r1(num, den);
+    Ratio<int> r2 = -r1;
+
+    EXPECT_EQ(r1.num(),-r2.num());
+    
+	}
+}
+
 TEST (RatioOperators, times) {
 
 	const size_t maxSize = 100;  
@@ -68,16 +139,90 @@ TEST (RatioOperators, times) {
     Ratio<int> r1(num1, den1), r2(num2,den2);
     Ratio<int> r3(num1*num2, den1*den2);
 
-    if ((r1+r2).den()==0 && r3.den()==0) {
+    if ((r1*r2).den()==0 && r3.den()==0) {
       return;
     }
 
     EXPECT_EQ(r1*r2,r3);
 
 	}
-
 }
 
+TEST (RatioOperators, stimes) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num = gen();
+    int den = gen();
+
+    Ratio<int> r1(num, den);
+    int a = 5;
+    Ratio<int> r2 (r1*a);
+
+    EXPECT_EQ(r2.num()*r1.den(),r1.num()*a*r2.den());
+
+	}
+}
+
+TEST (RatioOperators, div) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    int num2 = gen();
+    int den2 = gen();
+
+    Ratio<int> r1(num1, den1), r2(num2,den2);
+    Ratio<int> r3(num1*den2, den1*num2);
+
+    if ((r1/r2).den()==0 && r3.den()==0) {
+      return;
+    }
+
+    EXPECT_EQ(r1/r2,r3);
+
+	}
+}
+
+TEST (RatioOperators, sdiv) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num = gen();
+    int den = gen();
+
+    Ratio<int> r1(num, den);
+    int a = 5;
+    Ratio<int> r2 (r1/a);
+
+    EXPECT_EQ(r2.num()*r1.den()*a,r1.num()*r2.den());
+
+
+	}
+}
+
+
+// RatioMaths
 
 TEST (RatioMaths, sqrt) {
 

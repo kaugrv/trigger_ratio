@@ -11,8 +11,6 @@
 /// \li Tristan Debeaune
 /// \li Wendy Gervais
 
-
-
 /// \brief Highest common divisor (using Euclidean algorithm)
 /// \param a integer
 /// \param b integer
@@ -55,8 +53,6 @@ class Ratio {
         template<typename U, typename V>
         Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
             
-
-
             // inf = 1/0 or -1/0
             if (den==0) {
                 m_num=-(std::signbit(num)*2-1);
@@ -72,8 +68,6 @@ class Ratio {
                 m_den = -m_den;
                 m_num = -m_num;
             }
-
-
         }
         
         /// \brief Copy constructor
@@ -85,20 +79,17 @@ class Ratio {
         /// \brief Default destructor
         ~Ratio(){}
 
-
         /// \brief Numerator getter
         const T& num() const;
 
         /// \brief Denominator getter
         const T& den() const;
 
-
         /// \brief Numerator setter
         void setNum(const T &num);
 
         /// \brief Denominator setter
         void setDen(const T &den);
-
 
         /// \brief Returns den/num
         Ratio invert();
@@ -108,13 +99,11 @@ class Ratio {
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
 
-        /// @brief  Adds to itself
-        /// @param val 
+        /// \brief  Adds to itself
+        /// \param val 
         void operator+=(const Ratio &val);
         
         void operator+=(const T &val);
-
-
 
         /// \brief Negates a rational
         Ratio operator-() const;
@@ -122,12 +111,11 @@ class Ratio {
         /// \brief Substract 2 rationals
         Ratio operator-(const Ratio &val) const;
 
-        /// @brief  Substract to itself
-        /// @param val 
+        /// \brief  Substract to itself
+        /// \param val 
         void operator-=(const Ratio &val);
         
         void operator-=(const T &val);
-
 
         /// \brief Multiplies 2 rationals
         Ratio<T> operator*(const Ratio<T> &val) const;
@@ -135,16 +123,15 @@ class Ratio {
         /// \brief Multiplies a rational with an int
         template<typename U>
         Ratio<T> operator*(const U &val) const{
-            Ratio<T> res = *this*Ratio<T>(val);
+            Ratio<T> res = (*this)*Ratio<T>(val);
             return res;
         }
         
-        /// @brief  Multiplies with itself
-        /// @param val 
+        /// \brief  Multiplies with itself
+        /// \param val 
         void operator*=(const Ratio &val);
         
         void operator*=(const T &val);
-
 
         /// \brief Division of 2 rationals
         Ratio<T> operator/(const Ratio<T> &val) const;
@@ -211,7 +198,6 @@ const T& Ratio<T>::den() const{
     return m_den;
 }
 
-
 // numerator setter
 template <typename T>
 void Ratio<T>::setNum(const T &num){
@@ -236,14 +222,14 @@ void Ratio<T>::setNum(const T &num){
 template <typename T>
 void Ratio<T>::setDen(const T &den){
     
-    // check if the sign needs to be update
+    // checks if the sign needs to be updated
     if (den < 0){
         m_den = -den;
         m_num = -m_num;
     }
     else m_den = den;
 
-    // if den = 0 => it is 1/0 : infini
+    // if den = 0 => it is 1/0 : infinite
     if (den== 0) {
         m_num = 1;
         return;
@@ -262,8 +248,6 @@ Ratio<T> Ratio<T>::invert(){
     return Ratio(m_den, m_num);
 }
 
-
-
 // +
 template <typename T>
 Ratio<T> Ratio<T>::operator+(const Ratio<T> &val)const{
@@ -281,7 +265,8 @@ template <typename T>
 void Ratio<T>::operator+=(const T &scal){
     *this+=Ratio<T>(scal);
 }
-// - unary
+
+// - unary minus
 template <typename T>
 Ratio<T> Ratio<T>::operator-() const{
     return Ratio<T>(-m_num,m_den);
@@ -305,7 +290,7 @@ void Ratio<T>::operator-=(const T &scal){
     *this-=Ratio<T>(scal);
 }
 
-// * - with two rationals
+// * with two rationals
 template <typename T>
 Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
 {
@@ -313,7 +298,7 @@ Ratio<T> Ratio<T>::operator*(const Ratio<T> &val) const
     return result;
 }
 
-//*=
+// *=
 template <typename T>
 void Ratio<T>::operator*=(const Ratio &val){
     this->setDen(m_den*val.den());
@@ -373,7 +358,6 @@ bool Ratio<T>::operator<=(const Ratio<T> &val) const
 {
     return (T(this->num()*val.den()) <= T(val.num()*this->den()));
 }
-
 
 
 #endif

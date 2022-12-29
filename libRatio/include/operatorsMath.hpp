@@ -77,7 +77,6 @@ Ratio<T> average(Ratio<T> first, Args... args) {
     return (first + average(args...)*N)/(N+1);
 }
 
-
 /// \brief Square Root
 /// \param Ratio
 /// \returns float/double
@@ -180,5 +179,3 @@ R pow(const Ratio<T> &val, U n) {
     R result = pow(val.num(),n)/pow(val.den(),n);
     return result;
 }
-
-
