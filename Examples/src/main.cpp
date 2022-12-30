@@ -69,7 +69,16 @@ int main() {
     std::cout << "-inf.invert().invert() = " << ri2.invert().invert() << std::endl;
 
 
+
+    try {
+        std::cout << "Cos(inf) = " << cos(ri1) << std::endl;
+    } catch (std::exception &err){
+        std::cerr << err.what() << std::endl;
+    }
+    
     std::cout << "Exp(inf) = " << exp(ri1) << std::endl;
 
+
+ 
     return 0;
 }

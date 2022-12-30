@@ -91,7 +91,6 @@ U sqrt(const Ratio<T> &val) {
 /// \returns float/double
 template<typename T, typename U=double>
 U exp(const Ratio<T> &val) {
-    //if(val.den() == 0) return INFINITY;
 	U result = U (expf(convertRatioToFloat(val)));
     return result;
 }
@@ -114,7 +113,7 @@ U cos(const Ratio<T> &val) {
     if (val.den() == 0){
         throw std::invalid_argument("no limit in infinit, can't have a value");
     }
-	U result = U (cosf(convertRatioToFloat(val)));
+    U result = U (cosf(convertRatioToFloat(val)));
     return result;
 }
 
