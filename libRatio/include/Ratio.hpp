@@ -53,6 +53,12 @@ class Ratio {
         template<typename U, typename V>
         Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
             
+            if(den == 0 && num == 0){
+                throw(std::invalid_argument("can't construct 0/0"));
+                return;
+
+            }
+            
             // inf = 1/0 or -1/0
             if (den==0) {
                 m_num=-(std::signbit(num)*2-1);

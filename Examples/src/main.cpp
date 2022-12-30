@@ -57,6 +57,8 @@ int main() {
 
     std::cout << "inf*(-inf) = " << ri1*ri2 << std::endl;
 
+    std::cout << "Build a ratio with 0 and 0 (Ratio<int>(0,0)) results in a floating point exception and stops the program" << std::endl;
+
     std::cout << "Ratio to Float 0 = " << convertRatioToFloat(ro1) << std::endl;
     std::cout << "Ratio to Float inf = " << convertRatioToFloat(ri1) << std::endl;
 
