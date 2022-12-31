@@ -18,14 +18,18 @@ int main() {
     std::cout << "r2 = " << r2 << std::endl;
     std::cout << "r3 = " << r3 << std::endl;
     std::cout << "r4 = " << r4 << std::endl;
-    std::cout << "r5 = " << r5 << std::endl <<  std::endl;
+    std::cout << "r5 = " << r5 << std::endl <<  std::endl  << std::endl;
 
+    std::cout << "Ratio<float> if forbidden, and construct ratio from a flaot is forbidden also : Ratio<int>(0.2,3.1)  // It will result in an error std::invalid argument" << std::endl  << "You need to use the convertFloatToRatio function" << std::endl <<  std::endl;
 
     std::cout << "Operations with Ratio : " << std::endl;
     std::cout << "r2+r3 = " << r2+r3 << std::endl;
     std::cout << "r2-r3 = " << r2-r3 << std::endl;
     std::cout << "r2*r3 = " << r2*r3 << std::endl;
-    std::cout << "r2/r3 = " << r2/r3 << std::endl << std::endl;
+    std::cout << "r2/r3 = " << r2/r3 << std::endl;
+
+    std::cout <<"r2+3 = "<< r2+3 << std::endl;
+    std::cout <<"r2-3 = "<< r2-3 << std::endl << std::endl;
 
 
     std::cout << "Math Operators on Ratio : " << std::endl;
@@ -44,6 +48,7 @@ int main() {
     Ratio<int> ro2(0,-5);
     Ratio<int> ri1(5,0);
     Ratio<int> ri2(-5,0);
+    
 
     std::cout << "r3 + 0+ = " << r3 + ro1 << std::endl;
     std::cout << "r3 + 0- = " << r3 + ro2 << std::endl;

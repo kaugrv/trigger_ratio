@@ -44,6 +44,9 @@ class Ratio {
         /// \return val/1
         template<typename U>
         Ratio(const U val): m_num(val), m_den(1) {
+            if (std::is_floating_point<U>::value == true || std::is_floating_point<T>::value == true){
+                throw(std::invalid_argument("can't have floating ratio"));
+            }
         }
 
         /// \brief Parameterized constructor (from two integers)
@@ -52,6 +55,10 @@ class Ratio {
         /// \return num/den
         template<typename U, typename V>
         Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
+            
+            if (std::is_floating_point<U>::value == true || std::is_floating_point<V>::value ==true || std::is_floating_point<T>::value == true){
+                throw(std::invalid_argument("can't have floating ratio"));
+            }
             
             if(den == 0 && num == 0){
                 throw(std::invalid_argument("can't construct 0/0"));
@@ -105,6 +112,13 @@ class Ratio {
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
 
+        template <typename U>
+        Ratio operator+(const U &scal) const{
+            Ratio result = Ratio(this->num()+scal*this->den(), this->den());
+            return result;
+        }
+
+
         /// \brief  Adds to itself
         /// \param val 
         void operator+=(const Ratio &val);
@@ -116,6 +130,12 @@ class Ratio {
 
         /// \brief Substract 2 rationals
         Ratio operator-(const Ratio &val) const;
+
+        template <typename U>
+        Ratio operator-(const U &scal) const{
+            Ratio result = Ratio(this->num()-scal*this->den(), this->den());
+            return result;
+        }
 
         /// \brief  Substract to itself
         /// \param val 

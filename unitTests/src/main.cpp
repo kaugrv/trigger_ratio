@@ -71,6 +71,35 @@ TEST (RatioOperators, adds) {
 	}
 }
 
+TEST (RatioOperators, Sadds) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    int scal = gen();
+
+    Ratio<int> r1(num1, den1);
+    Ratio<int> r2(num1+scal*den1, den1);
+
+    if ((r1+scal).den()==0 && r2.den()==0) {
+      return;
+    }
+
+    EXPECT_EQ(r1+scal,r2);
+
+
+	}
+}
+
+
 TEST (RatioOperators, subs) {
 
 	const size_t maxSize = 100;  
@@ -98,6 +127,36 @@ TEST (RatioOperators, subs) {
 
 	}
 }
+
+TEST (RatioOperators, Ssubs) {
+
+	const size_t maxSize = 100;  
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<1000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    int scal = gen();
+
+    Ratio<int> r1(num1, den1);
+    Ratio<int> r2(num1-scal*den1, den1);
+
+    if ((r1-scal).den()==0 && r2.den()==0) {
+      return;
+    }
+
+    EXPECT_EQ(r1-scal,r2);
+
+
+	}
+}
+
+
 
 TEST (RatioOperators, minus) {
 
@@ -247,6 +306,29 @@ TEST (RatioMaths, sqrt) {
 	}
 }
 
+TEST (RatioMaths, log) {
+
+	const size_t maxSize = 50;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+	std::uniform_int_distribution<int> uniformDistributionValue(1,maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+
+	for(int run=0; run<10000; ++run) {
+
+    int num1 = gen();
+    int den1 = gen();
+
+    Ratio<int> r1(num1, den1);
+
+    float f = logf(num1*1.0/den1);
+    ASSERT_NEAR(log(r1), f, 1e-5);
+
+
+	}
+}
+
 TEST (RatioMaths, exp) {
 
 	const size_t maxSize = 50;  // max size of the tested vectors
@@ -273,7 +355,6 @@ TEST (RatioMaths, exp) {
 
 	}
 }
-
 
 TEST (RatioMaths, cos) {
 

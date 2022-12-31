@@ -82,6 +82,9 @@ Ratio<T> average(Ratio<T> first, Args... args) {
 /// \returns float/double
 template<typename T, typename U=double>
 U sqrt(const Ratio<T> &val) {
+    if (std::signbit(convertRatioToFloat(val))==true){
+        throw(std::invalid_argument("sqrt can't have negative arguments"));
+    }
 	U result = U (sqrtf(convertRatioToFloat(val)));
     return result;
 }
@@ -100,6 +103,9 @@ U exp(const Ratio<T> &val) {
 /// \returns float/double
 template<typename T, typename U=double>
 U log(const Ratio<T> &val) {
+    if (convertRatioToFloat(val) <=0){
+        throw(std::invalid_argument("log  can't have negative arguments"));
+    }
 	U result = U (logf(convertRatioToFloat(val)));
     return result;
 }
@@ -147,6 +153,9 @@ U sin(const Ratio<T> &val) {
 /// \returns float/double
 template<typename T, typename U=double>
 U asin(const Ratio<T> &val) {
+    if (convertRatioToFloat(val) > 1 && convertRatioToFloat(val) < 1){
+        throw std::invalid_argument("argument not include beetween [-1;1]");
+    }
 	U result = U (asinf(convertRatioToFloat(val)));
     return result;
 }
