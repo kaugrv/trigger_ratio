@@ -10,11 +10,12 @@
 /// \section A Rational Numbers Library
 /// \li Tristan Debeaune
 /// \li Wendy Gervais
+/// https://gitlab.com/rubykiara1712/trigger-ratio
 
 /// \brief Highest common divisor (using Euclidean algorithm)
 /// \param a integer
 /// \param b integer
-/// \return Hcd of a and b
+/// \return Highest common divisor of a and b
 int hcd(int a, int b) {
     if (b==0) {
         return abs(a);
@@ -56,14 +57,15 @@ class Ratio {
         template<typename U, typename V>
         Ratio(const U num, const V den): m_num(num/hcd(num, den)), m_den(den/hcd(num, den)){
             
+            // Ratio<float> is forbidden
             if (std::is_floating_point<U>::value == true || std::is_floating_point<V>::value ==true || std::is_floating_point<T>::value == true){
                 throw(std::invalid_argument("can't have floating ratio"));
             }
             
+            // 0/0 = exception
             if(den == 0 && num == 0){
                 throw(std::invalid_argument("can't construct 0/0"));
                 return;
-
             }
             
             // inf = 1/0 or -1/0
@@ -107,22 +109,25 @@ class Ratio {
         /// \brief Returns den/num
         Ratio invert();
 
+
         // Operators
 
         /// \brief Adds 2 rationals
         Ratio operator+(const Ratio &val) const;
 
+        /// \brief Adds Ratio + int
         template <typename U>
         Ratio operator+(const U &scal) const{
             Ratio result = Ratio(this->num()+scal*this->den(), this->den());
             return result;
         }
 
-
-        /// \brief  Adds to itself
+        /// \brief  Adds Ratio to itself
         /// \param val 
         void operator+=(const Ratio &val);
         
+        /// \brief  Adds int to itself
+        /// \param val 
         void operator+=(const T &val);
 
         /// \brief Negates a rational
@@ -131,16 +136,19 @@ class Ratio {
         /// \brief Substract 2 rationals
         Ratio operator-(const Ratio &val) const;
 
+        /// \brief Subs Ratio - int
         template <typename U>
         Ratio operator-(const U &scal) const{
             Ratio result = Ratio(this->num()-scal*this->den(), this->den());
             return result;
         }
 
-        /// \brief  Substract to itself
+        /// \brief  Substract Ratio to itself
         /// \param val 
         void operator-=(const Ratio &val);
         
+        /// \brief  Substract int to itself
+        /// \param val 
         void operator-=(const T &val);
 
         /// \brief Multiplies 2 rationals
@@ -153,10 +161,12 @@ class Ratio {
             return res;
         }
         
-        /// \brief  Multiplies with itself
+        /// \brief  Multiplies Ratio with itself
         /// \param val 
         void operator*=(const Ratio &val);
         
+        /// \brief  Multiplies int with itself
+        /// \param val 
         void operator*=(const T &val);
 
         /// \brief Division of 2 rationals

@@ -1,6 +1,9 @@
 
 #include "Ratio.hpp"
 
+#ifndef __OPERATORSMATH__HPP
+#define __OPERATORSMATH__HPP
+
 /// \brief Converter : first version, only works with positive numbers
 /// \param val float, double... (value to be converted)
 /// \param nbIter
@@ -56,6 +59,7 @@ Ratio<T> min(const Ratio<T> &val1, const Ratio<T> &val2 ) {
 }
 
 /// \brief Absolute Value
+/// \param Ratio
 /// \returns Ratio
 template<typename T>
 Ratio<T> abs(const Ratio<T> &val) {
@@ -187,3 +191,5 @@ R pow(const Ratio<T> &val, U n) {
     R result = pow(val.num(),n)/pow(val.den(),n);
     return result;
 }
+
+#endif
